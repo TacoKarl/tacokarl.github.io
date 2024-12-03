@@ -1,0 +1,28 @@
+/* Navbar.css */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    color: green;
+}
+
+.nav-link.active {
+    color: orange;
+}
+
+.game-board {
+    margin-top: 20px;
+}

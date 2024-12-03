@@ -1,0 +1,1562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Teknologi AU</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css"
+    />
+    <link href="../../src/assets/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id="forumHead">Welcome to the 3rd semester!</h1>
+    <nav id="navigation">
+      <a href="/" id="noUnderline">Home</a>
+      <a href="../third" id="noUnderline">3rd semester</a>
+    </nav>
+    <div class="content">
+      <aside>
+        <div class="course">
+          <a href="DOA.html">DOA</a>
+          <div class="subCourse">
+            <a href="#doaTitle">Top</a>
+            <a href="searching">Searching</a>
+            <a>Trees and heaps</a>
+            <a>Big O notation</a>
+            <a>Recursion</a>
+            <a>Stacks, queues and matrices</a>
+            <a>Priority queues</a>
+            <a>Sorting</a>
+            <a>Maze</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="DSB.html">DSB</a>
+          <div class="subCourse">
+            <a>Sampling og amplitude</a>
+            <a>Aliasering</a>
+            <a>Envelope</a>
+            <a>DFT, IFT, FFT, SDFT</a>
+            <a>FIR-, IIR-filtre</a>
+            <a>Signal flow graphs</a>
+            <a>PSD</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="HAL.html">HAL</a>
+          <div class="subCourse">
+            <a>Linux kernel</a>
+            <a>Linux modules</a>
+            <a>Interrupts</a>
+            <a>Device tree</a>
+            <a>Bus interface</a>
+            <a>Attributes and timers</a>
+            <a>Memory management</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="ISU.html">ISU</a>
+          <div class="subCourse">
+            <a>Different OS</a>
+            <a>Programming in Linux</a>
+            <a>Processes and threads</a>
+            <a>Thread synch</a>
+            <a>Thread comms</a>
+            <a href="ISU.html#osApi">OS API</a>
+            <a>Resource handling</a>
+            <a>Message system</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="NGK.html">NGK</a>
+          <div class="subCourse">
+            <a>Application layer</a>
+            <a>Transport layer</a>
+            <a>Network layer</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="PRJ3.html">PRJ3</a>
+          <div class="subCourse">
+            <a>Magichess</a>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <h2 id="isuTitle">Indlejret Software Udvikling</h2>
+        <div class="topics">
+          <p class="instructions">
+            Scroll down or hover over the course to see what topics you can read
+            about. These are the topics/subjects from the oral exam pdf.<br />
+            The special while loop! You need to learn it!:
+          </p>
+          <pre><code class="cpp">void logSystem::run(){
+  for (;;){
+    unsigned long id;
+    osapi::Message* msg = mq_receive(id);
+    handleMsg(id, msg);
+    delete msg;
+  }
+}</code></pre>
+          <h2 id="osKernel">Programmming in relation to the OS and Kernel</h2>
+          <div class="leftRight">
+            <div class="left">
+              <h3>Processes and threads</h3>
+              <h4>Processer</h4>
+              <ul>
+                <li>
+                  En proces er et program, der kører på en computer, inklusiv
+                  den eksekverbare kode, data, ressourcer og den tilstandm det
+                  har under udførelsen.
+                </li>
+                <li>
+                  Processer er isolerede fra hinanden, hvilket betyder at en
+                  fejl i en proces ikke påvirker andre processer.
+                </li>
+                <li>
+                  Et par eksempler: En webbrowser, et tekstbehandlingsprogram,
+                  eller en baggrundstjeneste.
+                </li>
+                <li>
+                  Disse er alle sammen individuelle processer, og er ikke
+                  afhængige af hinanden.
+                </li>
+              </ul>
+              <h4>Tråde</h4>
+              <ul>
+                <li>
+                  En tråd er den mindste enhed af eskekvering inden for en
+                  proces.
+                </li>
+                <li>
+                  En proces kan godt have flere tråde, der kører samtidig og
+                  deler den samme hukommelse og ressourcer, som vi har set i
+                  vores øvelser.
+                </li>
+                <li>
+                  Fordelene ved tråde inkluderer muligheden for at udøre flere
+                  opgaver parallelt. Koden afvikles ikke fra top til bottom som
+                  normalt mere.
+                </li>
+                <li>
+                  Et eksempel på dette er en webbrowser der har en tråd der
+                  håndterer UI'en, og en anden tråd der indlæser websider.
+                </li>
+              </ul>
+              <h3>Threading model</h3>
+              <p>
+                Der er forskellige trådmodeller,
+                <strong>Single-threading</strong>,
+                <strong>Multithreading</strong>, og
+                <strong>Synchronization Mechanisms</strong>
+              </p>
+              <h4>Single-threading</h4>
+              <ul>
+                <li>Her har hver enkel proces én enkelt tråd</li>
+                <li>
+                  Det er simpelt at implementere men kan ikke udnytte
+                  multicore-processorer effektivt
+                </li>
+                <li>Et simpelt script er et eksempel på dette</li>
+              </ul>
+              <h4>Multithreading</h4>
+              <ul>
+                <li>Hver proces kan have flere tråde</li>
+                <li>
+                  Kan køre på flere CPU cores samtidig, som øger effektiviteten
+                  og ydeevnen
+                </li>
+                <li>
+                  Kræver synkronisering for at undgå konflikter, når trådene
+                  deler ressourcer
+                </li>
+                <li>
+                  Et eksempel kan være en webserver, der håndterer flere
+                  forespørgsler samtidig
+                </li>
+              </ul>
+              <h4>Synchronization Mechanisms</h4>
+              <ul>
+                <li>
+                  <strong>Mutexes</strong>: Brugt til at sikre, at kun én tråd
+                  ad gangen kan få adgang til en ressource
+                </li>
+                <li>
+                  <strong>Semaphores</strong>: Kan bruges til at styre adgangen
+                  til ressourcer, der tillader flere samtidige tråde
+                </li>
+                <li>
+                  <strong>Locks</strong>: Bruges til at kontrollere adgangen til
+                  delt date og forhindre race condictions
+                </li>
+              </ul>
+              <h3>Process anatomy</h3>
+              <p>
+                En proces består af flere forskellige ting. Dette indebærer
+                <strong>stack</strong>, <strong>heap</strong>,
+                <strong>memory mapping</strong> og
+                <strong>Variabler og ELF</strong> (Datesegment og kodesegment).
+                <br />
+                Det er vigtigt at der er reserveret adresser til
+                <strong>Kernel space</strong>, da processer ville kunne bruge
+                nogle adresser som kernel space også vil bruge, hvis ikke der
+                var reserveret til dette. <br />
+                Det er <strong>PCB</strong>'en (Process Control Block) der
+                indeholder oplysninger om processen, såsom dens tilstand,
+                programtæller, CPU-registre og hukommelsesstyring.
+              </p>
+              <ul>
+                <li><strong>Stack</strong></li>
+                <ul>
+                  <li>Bruges til lokal lagring og funktionskald</li>
+                  <li>LIFO (Last In First Out)</li>
+                </ul>
+                <li><strong>Heap</strong></li>
+                <ul>
+                  <li>Dynamisk allokeret hukommelse</li>
+                  <li>
+                    "Free-store" (står der på slides, men hvad betyder det?
+                    &#x1F595;)
+                  </li>
+                  <li>
+                    August's bedste ven siger, at "free store" betyder at
+                    programmøren har magten over dette, og kan selv bestemme
+                    hvornår noget skal gemmes og slettes (allokere og
+                    deallokere)
+                    <br />
+                    Altså man skal manuelt stå for denne del af hukommelsen
+                  </li>
+                  <li>
+                    Denne frihed giver ansvaret til programmøren med at håndtere
+                    memory korrekt
+                  </li>
+                  <li>
+                    <q><em>With great power comes great responsibility</em></q>
+                    - Uncle Ben
+                  </li>
+                </ul>
+                <li><strong>Memory Mapping</strong></li>
+                <ul>
+                  <li>
+                    <strong>Virtual memory</strong>: OS giver en applikation en
+                    virtuel adresseplads, som kan oversættes til fysiske
+                    adresser via MMU (Memory Management Unit)
+                  </li>
+                  <li>
+                    Memory mapping bruger
+                    <strong>file mapping</strong>. Det kan bruges til at mappe
+                    en fil direkte ind i en proces' adresseplads
+                  </li>
+                  <li>
+                    <strong>Device Mapping</strong>: Enheder kan også loades ind
+                    i processens adresseplads, hvilket gør det muligt at
+                    interagere med enheden vha. almindelige
+                    hukommelsesoperationer.
+                  </li>
+                  <li>
+                    <strong>Shared Memory</strong>: Kan bruges til at dele
+                    hukommelse mellem flere processer, hvilket er nyttigt for
+                    IPC (Inter-Process Communication).
+                  </li>
+                </ul>
+                <li><strong>Data- kodesegment</strong></li>
+                <ul>
+                  <li>
+                    <strong>Kode segmentet</strong> er også kendt som tekst
+                    segmentet og er den del af processens hukommelse, der
+                    indeholder den eksekverbare kode.
+                  </li>
+                  <ul>
+                    <li>Indeholder den kompilerede maskinkode af programmet</li>
+                    <li>
+                      <strong>Read-Only</strong>: Den er markeret som Read-Only
+                      for at undgå uønskede ændringer
+                    </li>
+                  </ul>
+                  <li>
+                    <strong>Data segmentet</strong> er delen af processen der
+                    indeholder globale og statiske variabler som er
+                    initialiseret at programmøren selv. Der er to dele af dette.
+                  </li>
+                  <ul>
+                    <li>
+                      <strong>Initialiseret Data segment</strong>
+                    </li>
+                    <ul>
+                      <li>
+                        Indeholder initialiserede globale og statiske variabler
+                      </li>
+                      <li>
+                        Denne del er skrivbar, i modsætning til kode segmentet,
+                        så programmet kan ændre på variablerne
+                      </li>
+                    </ul>
+                    <li>
+                      <strong>Uinitialiseret data segment</strong>
+                    </li>
+                    <ul>
+                      <li>
+                        Indeholder globale og statiske variabler, der er
+                        deklareret men ikke initialiseret af programmøren
+                      </li>
+                      <li>
+                        Disse variabler er typisk Zero-initialized af systemet
+                        når programmet starter op
+                      </li>
+                      <li>
+                        Er også skrivbar ligesom det initialiserede segment
+                      </li>
+                    </ul>
+                  </ul>
+                </ul>
+              </ul>
+              <h3>Nu begynder vi</h3>
+              <p>
+                Vi bruger <strong>POSIX lib</strong>, som har typen
+                <em>pthread</em>. #include &lt;pthread.h&gt;<br />
+                Funktioner i dette bibliotek som vi bruger inkluderer
+              </p>
+              <ul>
+                <li><em>pthread_create()</em></li>
+                <li><em>pthread_join()</em></li>
+                <li><em>pthread_exit()</em></li>
+                <li><em>pthread_*(m.m.)</em></li>
+              </ul>
+            </div>
+            <div class="right">
+              <h3>Virtual Memory</h3>
+              <p>
+                Virtual memory er en teknik der anvendes af operativsystemer til
+                at udvide den tilgængelige hukkommelse ved are bruge både RAM og
+                diskplads. Et pare nøglebegreber inden for virtual memory er
+                <strong>Paging</strong>, og <strong>Segmentering</strong>.<br />
+                Paging er hukommelsen der bliver opdelt i faste størrelser.
+                Disse opdelinger kaldes pages.<br />
+                Segementering er hvor hukommelsen bliver opdelt i segmenter af
+                varierende størrelse baseret på logiske afsnit af programmet.<br />
+                Men hvordan virker det så?
+              </p>
+              <ul>
+                <li>
+                  Programmer bruger virtuelle adresser, som oversættes til
+                  fysiske adresser af MMU (Memory Managemant Unit)
+                </li>
+                <li>
+                  <strong>Page tables</strong> holder styr på hvor virtuelle
+                  sider er placeret i den fysiske hukkomelse eller på disken
+                </li>
+                <li>
+                  <strong>Deman paging</strong> indlæser kun sider i RAM, når
+                  det skal bruges, hvilket sparer på hukommelsen
+                </li>
+                <li>
+                  <strong>Swapping</strong> flytter data mellem RAM og disk, når
+                  der ikke er nok RAM til at indeholde alle aktive data
+                </li>
+              </ul>
+              <p>
+                Nogle fordele med virtual memory er en øget effektivitet og
+                fleksibilitet, bedre beskyttelse og isolering af processer.
+                <br />
+                Der er også nogle ulemper. Det kan f.eks føre til langsommere
+                ydeevne, hvis systemet skal bytte data mellem disk og RAM ofte
+              </p>
+              <h3>
+                Threads being executed on CPU, the associated scheduler & cache
+              </h3>
+              <p>
+                Threads bliver
+                <strong>mapped for execution</strong> af scheduler som bruger en
+                af de 3 modeller <strong>User-level threading</strong>,
+                <strong>Kernel-level threading</strong> eller
+                <strong>Hybrid-level threading</strong>.
+              </p>
+              <ul>
+                <li><strong>User-level threading</strong></li>
+                <ul>
+                  <li>
+                    Er en simpel implementation som ikke har brug for kernel
+                    support
+                  </li>
+                  <li>Kan ikke håndtere multicores</li>
+                  <li>Single-threading</li>
+                </ul>
+                <li><strong>Kernel-level threading</strong></li>
+                <ul>
+                  <li>Behøver thread awareness i kernel</li>
+                  <li>Effektiv ved brug af multicores</li>
+                  <li>Mapper direkte threads som scheduleren kan kontroller</li>
+                </ul>
+                <li><strong>Hybrid-level threading</strong></li>
+                <ul>
+                  <li>
+                    En kompleks implementation der kombinere de to ovenstående
+                    metoder
+                  </li>
+                  <li>
+                    Kræver god koordination mellem user space og kernel space
+                    scheduler
+                  </li>
+                  <li>Ellers kan det skabe en mindre optimal løsning</li>
+                </ul>
+              </ul>
+              <p>
+                Et begreb der kaldes
+                <strong>Context switching</strong> bliver udøvet at OS, der
+                suspendere den nuværende process for at fortsætte en anden
+                process. Der er nogle generelle steps i dette
+              </p>
+              <ul>
+                <li>Afbryd nuværende process</li>
+                <li>
+                  Gem konteksten af den nuværende process (SP, PC, registre,
+                  ...)
+                </li>
+                <li>Gendan konteksten af næste proces</li>
+                <li>Fortsæt eksekvering af næste proces</li>
+              </ul>
+              <p>
+                Der findes to former for context switching.
+                <strong>Pre-emptive scheduling</strong> hvor processer kan blive
+                afbrudt når som helst, og
+                <strong>non-preemptive scheduling</strong> hvor processer
+                frivilligt opgiver ressourcer til CPU'en. Linux supporter begge
+                former.
+              </p>
+              <h4>Livscyklussen for en proces</h4>
+              <img
+                src="img/life_of_pi.png"
+                alt="Livscyklussen for en proces"
+                width="500px"
+              />
+              <ul>
+                <li>Waiting</li>
+                <ul>
+                  <li>I kø for at kører på processeren</li>
+                </ul>
+                <li>Running</li>
+                <ul>
+                  <li>Kører på processeren</li>
+                </ul>
+                <li>Blocked</li>
+                <ul>
+                  <li>Venter på:</li>
+                  <ul>
+                    <li>Mutex</li>
+                    <li>Fil</li>
+                    <li>Forbindelse</li>
+                  </ul>
+                </ul>
+                <li>Swapped out</li>
+                <ul>
+                  <li>Placeret på disken</li>
+                </ul>
+              </ul>
+              <h3>Multithreaded systemer</h3>
+              <p>Multithreaded systemer har nogle fordele og ulemper</p>
+              <ul>
+                <li><strong>Fordele</strong></li>
+                <ul>
+                  <li>
+                    Prioterisering - Den højest prioriterede opgave får lov at
+                    køre
+                  </li>
+                  <li>Modulisering - Wrap concurrent activities in a task</li>
+                  <li>Ressource brug - Ikke brug CPU tid på at vente på I/O</li>
+                </ul>
+                <li><strong>Ulemper</strong></li>
+                <ul>
+                  <li>Delt data</li>
+                  <li>Starvation</li>
+                </ul>
+              </ul>
+              <p>
+                Lad os snakke lidt om disse ulemper.<br />
+                <strong>Delt data (Shared data)</strong>. Da threads deler data,
+                kan du risikere, hvis ikke du undgår det, at to threads tilgår
+                og ændrer på den samme variabel på samme tid. Dette kan
+                resultere i uforudsigelighed i dit program da du ikke ved med
+                sikkerhed hvad variablen er hvornår. Dette kan også ændre sig
+                for hver gang programmet kører.<br />
+                <strong>Starvation</strong>. Har du et bestemt interval dine
+                tasks skal køre på, kan for mange tasks resultere i starvation,
+                hvor en eller flere ikke bliver udført. Det er et problem i
+                hvilket som helst prioritets baseret system. Sker når dit
+                "schedule-vindue" er for lille så dine lav-prioritets opgaver
+                ikke når at blive udført pga. højere prioritets opgaver bliver
+                udført i hele vinduet. Det kan være svært at forudsige og kan i
+                visse tilfælde kun ske i meget specielle situationer.
+              </p>
+            </div>
+          </div>
+          <h2 id="sync">Synchronization and protection</h2>
+          <div class="leftRight">
+            <div class="left">
+              <h3>Data integrity - Concurrency challenge</h3>
+              <p>
+                Vi havde jo et problem med shared data. Når vi ville lave et
+                program med flere threads kan vi støde på det problem at data
+                kan blive tilgået og ændret på samme tid af forskellige threads
+                hvilket resulterer i uforudsigelighed i dit program. Det kan vi
+                undgå med locks. Til det skal vi bruge mutexes. Når vi har låst
+                et mutex, kan flere ikke tilgå det "lånte" data. Når vi så er
+                færdige med at bruge den data, låser vi vores mutex op igen. Et
+                eksempel kan ses herunder:
+              </p>
+              <pre><code class="cpp">
+unsigned int shared;
+Mutex m = MUTEX_INITIALIZER;
+
+void threadFunc(){
+  for (;;){
+    lock(m);
+    shared++;
+    unlock(m);
+    sleep(ONE_SECOND);
+  }
+}
+
+main(){
+  createThread(threadFunc);
+  createThread(threadFunc);
+  for(;;) sleep(100);
+}</code></pre>
+              <p>
+                Altså løsningen på problemet med delt data, er
+                <strong>Mutexes</strong>, eller <strong>Semaphores</strong>. Her
+                låser du din mutex eller semaphore inden du arbejder på data.
+                Inde i det låste "vindue" kan du arbejde med din data, og når du
+                er færdig, låser du op for denne mutex eller semaphore igen. Det
+                er vigtigt at huske, at det her er programmørens ansvar at bruge
+                mutexes/semaphores ordentligt og låse og oplåse på de rigtige
+                tidspunkter. Din compiler vil ikke hjælpe dig. ChatGPT kan
+                måske, men ellers er der ingen hjælp.
+              </p>
+              <h3>Mutex & Sephamores</h3>
+              <p>
+                Mutexes står for MUTual EXclusion, og er ejet f en thread ad
+                gangen, hvilket sikrer at kun en handling kan gøres ad gangen.
+                Mutexes bruger to funktioner: <strong>lock(m)</strong> og
+                <strong>unlock(m)</strong>.
+              </p>
+              <p>
+                Semaphores bliver brugt til at signalere, men kan også bruges
+                til mutual exclusion. Modsat mutexes er en semaphore ikke eget
+                af en thread ad gangen, så "alle" kan release en sephamore. De
+                to operationer på en semaphore er
+                <strong>take(s)</strong> og <strong>release(s)</strong>.
+              </p>
+              <h3>Mutex & Conditionals</h3>
+              <p>
+                Conditionals er en form for signaling mechanism. Vi har en
+                <strong>receiver/waiter</strong> og en
+                <strong>sender/indicator</strong>. Receiver/waiter, venter på en
+                conditional variabel, og en sender/indicator signalerer et
+                partikulært condition variabel på et tidspunkt. Du skal definere
+                en mutex, condition og et signal flag. Et lille eksempel kan ses
+                herunder:
+              </p>
+              <pre><code class="cpp">
+Mutex m;
+Condition c;
+
+bool waitingFor = false;
+
+void theWaiter(){
+  lock(m);
+  while(!waitingFor){
+    condWait(c, m);
+  }
+  waitingFor = false;
+  unlock(m);
+}
+
+void theIndicator(){
+  lock(m);
+  waitingFor = true;
+  condSignal(c);
+  unlock(m);
+}</code></pre>
+              <p>
+                I denne kode, har vi et loop i waiter funktionen. I dette loop,
+                venter vi på et signal med condWait(), det gør at låsen bliver
+                unlocked og når denne condition kommer, bliver låsen taget igen,
+                så vi kan gøre hvad vi vil, og derefter låse op til sidst. Det
+                betyder at du ikke længere blokerer med din lock, så længe du
+                venter på et signal med condWait. <br />
+                Signaler funktionen kan tage låsen når waiter funktionen venter
+                på en condition, og gør sin ting før den signalerer at nu må en
+                anden bruge den, og derefter låser op for vores mutex.<br />
+                Man kan se mere om dette fra slide
+                <strong>21</strong> i
+                <strong>Thread Synchronization II</strong>. Det omhandler
+                Park-A-Lot 2000.<br />
+                Denne form for synkronisering gør det muligt at sikre dit
+                program, så du ikke "håber" at det virker, men ved at det
+                virker.<br />
+                forskellige synkroniserings metoder inkluderer:
+              </p>
+              <ul>
+                <li>
+                  <strong>Mutex</strong>: s=0 eller s=1, hører til 1 thread ad
+                  gangen
+                </li>
+                <li>
+                  <strong>Conditionals</strong>: Singalerings metode brugt
+                  sammen med mutex
+                </li>
+                <li>
+                  <strong>Read/writeable locks</strong>: Flere readers, ekslusiv
+                  writer
+                </li>
+                <li>
+                  <strong>Counting semaphore</strong>: s&le;0, delt mellem tråde
+                </li>
+                <li>
+                  <strong>Binary semaphore</strong>: s=0 eller s=1, delt mellem
+                  tråde
+                </li>
+              </ul>
+              <p>Forskellige synkroniserings mekanismer:</p>
+              <p>#include &lt;pthread.h&gt;</p>
+              <ul id="nonFormat">
+                <li>
+                  <em
+                    >int pthread_mutex_init(pthread_mutex_t* mutex,
+                    pthread_mutex_attr_t *mutexattr)</em
+                  >
+                </li>
+                <li>
+                  <em>int pthread_mutex_lock(pthread_mutex_t* mutex)</em>
+                </li>
+                <li>
+                  <em>int pthread_mutex_unlock(pthread_mutex_t* mutex)</em>
+                </li>
+                <li>
+                  <em>int pthread_mutex_destroy(pthread_mutex_t* mutex)</em>
+                </li>
+                <li>
+                  <em
+                    >int pthread_rwlock_init(pthread_rwlock_t* mutex,
+                    pthread_rwlockattr_t *mutexattr)</em
+                  >
+                </li>
+                <li>
+                  <em>pthread_rwlock_rdlock(pthread_rwlock_t* mutex)</em>
+                </li>
+                <li>
+                  <em>pthread_rwlock_wrlock(pthread_rwlock_t* mutex)</em>
+                </li>
+                <li>
+                  <em>pthread_rwlock_unlock(pthread_rwlock_t* mutex)</em>
+                </li>
+                <li>
+                  <em>pthread_rwlock_destroy(pthread_rwlock_t* mutex)</em>
+                </li>
+                <li>
+                  <em
+                    >int pthread_cond_init(pthread_cond_t* cond, const
+                    pthread_contattr_t *attr)</em
+                  >
+                </li>
+                <li>
+                  <em
+                    >int pthread_cond_wait(pthread_cond_t* cond,
+                    pthread_mutex_t* mutex)</em
+                  >
+                </li>
+                <li>
+                  <em>int pthread_cond_signal(pthread_cond_t* cond)</em>
+                </li>
+                <li>
+                  <em>int pthread_cond_broadcast(pthread_cond_t* cond)</em>
+                </li>
+                <li>
+                  <em>int pthread_cond_destroy(pthread_cond_t* cond)</em>
+                </li>
+              </ul>
+              <p>#include &lt;semaphore.h&gt;</p>
+              <ul id="nonFormat">
+                <li>
+                  <em
+                    >int sem_init(sem_t* sem, int pshared, unsigned int
+                    value)</em
+                  >
+                </li>
+                <li><em>int sem_destroy(sem_t* sem)</em></li>
+                <li><em>int sem_wait(sem_t* sem)</em></li>
+                <li><em>int sem_post(sem_t* sem)</em></li>
+              </ul>
+              <p>
+                På sidste slide står der at vi skal lære
+                <strong>RAII (Resource Acquisition Is Initialization)</strong>
+                som vi gennemgår lidt længere nede.
+              </p>
+            </div>
+            <div class="right">
+              <h3>Producer / Consumer problem</h3>
+              <p>
+                En producer putter ting ind i en buffer, og en user tager ting
+                fra en buffer. Men hvad sker der når en producer prøver at putte
+                ind i en fyldt buffer, eller hvis en user prøver at tage fra en
+                tom buffer? Vi har et eksempel fra slides, der bruger semaphores
+                kan ses herunder: (Forklaring kommer bagefter).
+              </p>
+              <pre><code class="cpp">
+class Buffer{
+  public:
+    Buffer(size_t bufferSize) :
+            buffer_(new uint8_t[bufferSize]),
+            bufferSize_(bufferSize),
+            insert_(0), remove_(0){
+              emptySlotsLeftSem =
+              createCountingSem(bufferSuize_);
+              usedSlotsLeftSem =
+              createCountingSem(0);
+    }
+
+    void put(uint8_t x){
+      take(emptySlotsLeftSem);
+      buffer[insert_] = x;
+      insert_ = (insert_+1)%bufferSize_
+      // hvorfor bruger du modulus bufferSize_
+      release(usedSlotsLeftSem);
+    }
+
+    uint8_t get(){
+      take(usedSlotsLeftSem);
+      uint8_t tmp = buffer_[remove_];
+      remove_ = (remove_+1)%bufferSize_;
+      // hvorfor bruger du modulus bufferSize_?
+      release(emptySlotsLeftSem);
+    }
+
+  private:
+    uint8_t buffer;
+    size_t bufferSize_, insert_, remove_;
+    SEM_ID emptySlotsLeftSem;
+    SEM_ID usedSlotsLeftSem;
+}</code></pre>
+              <p>
+                Her starter vi med at vi har to semaphores, én for empy slots og
+                én for used slots.
+                <strong>put()</strong> tilføjer en uint8_t ved at tage en
+                semaphore fra empty slots, og derefter releaser en til used
+                slots. <strong>get()</strong> tager en semaphore fra used slots
+                og releaser en til empty slots.<br />
+                Grunden til vi bruger modulus, er så vi ikke kommer over
+                bufferSize. Hvis
+                <em>remove_</em> eller <em>insert_</em> bliver større end
+                bufferSize, bliver den kun ændret til at bliver det nummer
+                større end bufferSize, så vi ikke kommer ud af range for vores
+                buffer. Det kan dog resultere i at, hvis ikke der bliver taget
+                med get() ofte nok, kan data blive overskrevet.
+              </p>
+              <h3>Dead locks</h3>
+              <p>
+                Dead locks er en Pain in the ass! Det er en situation, hvor du
+                aldrig kan afvikle dit program, og det kan ske når du bruger
+                mutexes. Det sker hvis to eller flere threads venter på at en
+                ressource bliver tilgængelig fra den anden thread for at kunne
+                køre. Men den ressource bliver aldrig tilgængelig. <br />
+                Det tager os videre til et kendt eksempel, kaldet
+                <strong>The Dining philosophers</strong>, som er et eksempel på
+                Dead locks
+              </p>
+              <h3>Dining philosophers</h3>
+              <p>Kan også kaldes for The dining idiots går ud på dette:</p>
+              <ol>
+                <li>
+                  En filosof tager <strong>højre</strong> og
+                  <strong>venstre</strong> gaffel op, spiser og lægger
+                  <strong>venstre</strong> og <strong>højre</strong> gaffel på
+                  bordet og tænker:
+                </li>
+                <li>
+                  Hvis en gaffel er <strong>taget</strong>, skal filosoffen
+                  vente på at den er
+                  <strong>klar</strong>
+                </li>
+              </ol>
+              <p>
+                De sidder fire filosoffer/idioter rundt om et bord. Der er fire
+                gafler. Én på hver side af hver filosof. Den første tager
+                <strong>venstre</strong>, næste tager også
+                <strong>venstre</strong> osv. indtil allehar taget
+                <strong>venstre</strong> gaffel.<br />
+                Så vil den første filosof gerne tage
+                <strong>højre</strong> gaffel, men fordi filosoffen til højre
+                for ham har taget sin <strong>venstre</strong> gaffel, er den
+                første filosofs <strong>højre</strong> gaffel ikke tilgængelig,
+                og han må derfor vente på at den bliver ledig. Dette sker for
+                alle filosofferne, og vi kan derfor ikke komme videre, da alle
+                venter på deres <strong>højre</strong> gaffel, som ingen vil
+                give.
+              </p>
+              <p>
+                En løsning kunne være at hver anden filosof tog deres
+                <strong>venstre</strong> gaffel først og de andre to tog deres
+                <strong>højre</strong> gaffel først. Det vil resultere i at kun
+                en filosof kan spise ad gangen, og en anden kan vente på sin
+                anden gaffel, mens de to sidste venter på deres første gaffel.
+                Her undgår vi en deadlock, og spisningen kan afvikles. En
+                visualisering kan ses herunder og kan læses mere om på
+                <a
+                  id="aFormat"
+                  href="https://en.wikipedia.org/wiki/Dining_philosophers_problem"
+                  >Wikipedia</a
+                >
+              </p>
+              <img
+                src="img/idiot.png"
+                alt="dining philosophers visualization"
+                width="400px"
+              />
+              <p>
+                De blå pile er hvad der først blev taget. De røde pile viser
+                hvad der prøves på at blive taget, men fejler, fordi gaflen
+                allerede er taget af en anden.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h2 id="threads">Thread communication</h2>
+            <div class="leftRight">
+              <div class="left">
+                <h3>The challenges performing intra-process communication</h3>
+                <p>
+                  Kommunikations design udfordringer som der bliver forelagt i
+                  slides indebærer
+                </p>
+                <ul>
+                  <li>
+                    Individuelle tråde venter på en condition skal blive
+                    <em>true</em>
+                  </li>
+                  <li>
+                    At gå ind og ud af kritiske sektioner ved brug af
+                    <em>mutexes</em> eller
+                    <em>semaphores</em>
+                  </li>
+                  <ul>
+                    <li>Kan ske flere gange i en thread loop iteration</li>
+                  </ul>
+                  <li>
+                    Kan reservere flere ressourcer som skal synkroniseres mellem
+                    tråde
+                  </li>
+                  <ul>
+                    <li>
+                      Sekvensen hvor ressourcer bliver taget skal tænkes igennem
+                    </li>
+                  </ul>
+                </ul>
+                <p>En lille opsummering af dette:</p>
+                <ul>
+                  <li>
+                    Et design der sikrer at der ikke sker deadlocks eller timing
+                    problemer
+                  </li>
+                  <li>Læsbarhed bliver hurtigt et problem også</li>
+                  <li>Høj kompleksitet af koden som et resultat</li>
+                </ul>
+                <p>
+                  Til dette vil vi gerne have
+                  <strong>events/messages</strong>, for at vi kan lave en opgave
+                  når en condition bliver sat til <em>true</em>.<br />
+                  Ved event driven programming bliver hver message håndteret af
+                  en specifik handler. Altså en specifik funktion bliver kaldt
+                  når vi modtager et specifikt event.
+                  <br />Her kan vi have to forskellige inputs:
+                </p>
+                <ul>
+                  <li>Sensor input</li>
+                  <ul>
+                    <li>
+                      Temperatur oversteget besked &rarr; skru ned for varmen
+                    </li>
+                    <li>Bil registreret &rarr; Åben garage dør</li>
+                  </ul>
+                  <li>Signal input</li>
+                  <ul>
+                    <li>Exit knap i GUI &rarr; luk program</li>
+                  </ul>
+                </ul>
+                <p>
+                  Med andre ord kan man skrive det som:
+                  <strong>event = Message</strong>. Og dette kan ses som en
+                  proces med to faser
+                </p>
+                <ul>
+                  <li>Acquire/select new message</li>
+                  <ul>
+                    <li>
+                      Håndteret af en
+                      <strong>Message Queue (MQ)</strong>
+                      og sikrer at et antal af beskeder kan være i "kø" ad
+                      gangen
+                    </li>
+                  </ul>
+                  <li>Process new message in handler</li>
+                  <ul>
+                    <li>
+                      Håndteret ved at lave en case til en specifik Message
+                    </li>
+                  </ul>
+                </ul>
+                <h3>Message queue</h3>
+                <p>
+                  Message Queue er den kø hvor beskederne kommer. For at
+                  gennemgå denne vender vi tilbage til Producer og consumer
+                  problemet, hvor en producer putter ind i en kø og consumer
+                  modtager fra givne kø. <br />
+                  Vi kan have flere producers og en consumer, som håndterer de
+                  forskellige beskeder i vores message queue
+                  <strong>MsgQueue</strong>. Et par ekstra kriterier for denne
+                  er:
+                </p>
+                <h4>The premises for designing it</h4>
+                <ul>
+                  <li>
+                    Hvis den modtagende kø er fuld, må tråden der ønsker at
+                    overføre kontrol og/eller data blokere og vente på mere
+                    plads
+                  </li>
+                  <ul>
+                    <li>Der er et max antal af elementer i køen</li>
+                  </ul>
+                  <li>
+                    Den modtagende tråd må blokere når den modtager fra en tom
+                    kø
+                  </li>
+                  <li>Blokeringer skal ikke laves med polling (sleeps)</li>
+                  <li>
+                    Hvad skal vi gøre når vi ikke må bruge sleep? &rarr;
+                    <strong>Conditionals</strong>
+                  </li>
+                </ul>
+                <h4>Various design solutions - Which one is chosen and why</h4>
+                <p>
+                  Der findes forskellige solutions til dette.
+                  <strong>void/simple array of bytes</strong>,
+                  <strong>template baseret</strong> og
+                  <strong>inheritance</strong>. Vi vælger inheritance, men
+                  herunder kan du se hvad det forskellige typer indeholder
+                </p>
+                <ul>
+                  <li>Void/array</li>
+                  <ul>
+                    <li>Kan indeholde alting</li>
+                    <li>
+                      Ingen type info - ingen type safety (Hvisikke vi ved hvad
+                      det er, ved vi ikke hvordan vi skal slette det)
+                    </li>
+                  </ul>
+                  <li>Template</li>
+                  <ul>
+                    <li>
+                      Afhænger af om implementationen er en god løsning, men
+                      mere kompleks
+                    </li>
+                    <li>Type safety</li>
+                  </ul>
+                  <li>Inheritance</li>
+                  <ul>
+                    <li>Simpel og udviddet med sub-classing</li>
+                    <li>Type-safety/type-info - delete med base pointer</li>
+                    <li>Might incur overhead?</li>
+                  </ul>
+                </ul>
+                <h4>Its design and implementation</h4>
+                <p>Et lille diagram på hvordan de designes kan ses herunder:</p>
+                <img
+                  src="img/inheritance.png"
+                  alt="inheritance desing"
+                  width="400px"
+                />
+                <p>Og et lille kode udsnit kan ses herunder:</p>
+                <pre><code class="cpp">class Message{
+  public:
+    virtual ~Message(){}
+}
+
+struct garageDoorOpenReq : public Message {
+  MsgQueue* mq_;
+}</code></pre>
+                <p>
+                  Til dette skal vi bruge message parsing. En producer laver og
+                  sender en garageDoorOpenReq besked. Derfor bliver klassen
+                  garageDoorOpenReq betragtet som en Message*. Men hvordan ved
+                  receiveren hvilken type det egentlig er?. Hvordan konverterer
+                  vi en Message* til en garageDoorOpenReq*?
+                </p>
+                <p>
+                  Det gør vi selvfølgelig med dynamic_cast&lt;&gt; eller med
+                  typeid(). Hvordan man kan med disse to metoder kan ses
+                  herunder:
+                </p>
+                <pre><code class="cpp">garageDoorOpenReq gdor;
+Message* msg_ = &gdor ;
+
+garageDoorOpenReq* req = 
+  dynamic_cast&lt;garageDoorOpenReq&gt;(msg_);
+
+if(typeid(*msg_)==typeid(garageDoorOpenReq)){
+  garageDoorOpenReq* req = 
+    static_cast&lt;garageDoorOpenReq&gt;(msg_);
+}</code></pre>
+                <p>
+                  Vi kan også associere id'et med en message, som faktisk er den
+                  vi har arbejdet med. Her kan vi bruge enums og switch cases.
+                  Her har vi to elementer til vores MessageQueue: id_ og msg_
+                </p>
+              </div>
+              <div class="right">
+                <h3>
+                  Impact on design/implementation between before and after
+                  message queue
+                </h3>
+                <p>Vi har tre typer af signaler:</p>
+                <ul>
+                  <li>
+                    <strong>Request</strong>: navngivet XXXReq (en request har
+                    brug for en confirm)
+                  </li>
+                  <li><strong>Confirm</strong>: nanvngivet XXXCfm</li>
+                  <li>
+                    <strong>Indication</strong>: navngivet XXXInd (envejs
+                    kommunikation)
+                  </li>
+                </ul>
+                <p>
+                  Med alt dette kan vi oprette en car thread med tilhørende
+                  funktioner. Denne kan ses herunder:
+                </p>
+                <pre><code class="cpp">enum{ ID_START_IND, ID_GARAGE_DOOR_OPEN_CFM }
+pthread_t carId;
+MsgQueue carMq;
+
+void carHandler(unsigned id, Message* msg){
+  switch(id) {
+    case ID_START_IND:
+      carHandleIdStartInd();
+      break;
+    case ID_GARAGE_DOOR_OPEN__CFM:
+      carHandleIdGarageDoorOpenCfm(
+      static_cast&lt;garageDoorOpenCfm&gt;(msg));
+      break;
+  }
+}
+
+void* car(void*){
+  for(;;){
+    unsigned long id;
+    Message* msg = carMq.receive(id);
+    carHandler(id, msg);
+    delete msg;
+  }
+}
+
+void startCarThread(){
+  pthread_create(&carId, nullptr, car, nullptr);
+  carMq.send(ID_START_IND);
+}</code></pre>
+                <p>
+                  Disse funktioner skal også have implementationer jo, og der
+                  skal også have funktioner for ID_GARAGE_DOOR_OPEN_REQ, som i
+                  dette tilfælde kun har én case og ikke har brug for en start
+                  indikator.
+                </p>
+                <h3>Event driven programming</h3>
+                <p>Nu har vi diskuteret lidt om event driven programming</p>
+                <h4>Basic idea</h4>
+                <p>
+                  Vi har et event loop, og skal kun bruge et funktionskald til
+                  receive og handle i loopet. Vi har Message parsing hvor en
+                  sender Allokerer og en receiver Deleter/Deallokerer, da
+                  receiver er den eneste del der ved hvornår vi ikke skal bruge
+                  beskeden mere. Det består af tre principper:
+                </p>
+                <ol>
+                  <li><strong>Event loop</strong></li>
+                  <ul>
+                    <li>
+                      Event loopet venter på et event og sørger for at kalde de
+                      relevante handlers, der passer til eventet. Det sørger for
+                      at programmet altid er klar til nye events.
+                    </li>
+                  </ul>
+                  <li><strong>Event handler</strong></li>
+                  <ul>
+                    <li>
+                      Funktionskald eller metoder der håndterer de events der
+                      kommer. Bliver kaldet af event loopet.
+                    </li>
+                  </ul>
+                  <li><strong>Message parsing</strong></li>
+                  <ul>
+                    <li>
+                      Når et events modtages, skal beskeden parses for at forstå
+                      indhold og oprindelse. En sender allokerer en besked og en
+                      receiver deallokerer den. På denne måde håndteres
+                      ressourcerne effektivt.
+                    </li>
+                  </ul>
+                </ol>
+                <h4>Reactiveness</h4>
+                <p>
+                  En stor fordel med dette event-driven programming, er at
+                  systemet kan reager hurtigt og effektivt. Det uendelige loop
+                  sørger for at et event bliver håndteret hurtigt, så event
+                  loopet kan reagere på næste event. Den måde det bliver
+                  håndteret på er at kalde en handler, der passer til det event
+                  der kommer, og loopet er klar igen.
+                </p>
+                <h4>
+                  Design - e.g. from sequence diagrams to code (or vice versa)
+                </h4>
+                <p>
+                  Se slide 24, til 31 i <strong>Thread communication</strong>
+                </p>
+              </div>
+            </div>
+            <h2 id="osApi">OS API</h2>
+            <div class="leftRight">
+              <div class="left">
+                <p>
+                  En API gemmer noget at systemet. Det står for Application
+                  programming interface, og giver en hvis form for abstraktion
+                  og simplifikation. Det muliggør kommunikation mellem
+                  forskellige softwarekomponenter, hvilket gør det muligt for
+                  udviklere at interagere med systemet uden at skulle forstå de
+                  komplekse underliggende detaljer
+                </p>
+                <h3>The design philosophy - Why OO and OS Api?</h3>
+                <p>
+                  Why should you use Object-Oriented programming and OS Api?
+                  <br />Different OS'es have different approaches to the
+                  creation of threads, Manipulation of mutexes, how to allocate
+                  memory, open files, etc. Nu skifter vi lige til dansk. Brugen
+                  af en OS Api gør dette meget enklere ved at lave en funktion
+                  for det hele. Selve programmet eller OS Api, sørger så at stå
+                  for, at kalde den rette funktion, alt efter hvilket OS du er
+                  på. <br />
+                  Du skal altså kun lære én API for at lave threads, manipulere
+                  med mutexes osv. og ikke lære for hvert styresystem.
+                  <br />Du kan altså bygge dit program på din computer, teste
+                  det der og flytte det over på din device, uden at skulle ændre
+                  kode, bygge det på device og programmet vil opføre sig som da
+                  du testede det på computeren, da OS API bygger programmet til
+                  det styresystem det ligger på, og derefter kalder de rigtige
+                  funktioner.<br />
+                  Det gør at muligvis kun små detaljer skal debugges på din
+                  target platform, og de store bugs kan debugges nemmere og
+                  hurtigere på din computer
+                </p>
+                <h3>
+                  Elaborate on the challenge of building it and its current
+                  design
+                </h3>
+                <p>
+                  Når man designer et system, der skal være kompatibelt med
+                  flere operativsystemer, er der betydelige udfordringer. En af
+                  de største udfordringer er at sikre, at programmet fungerer
+                  korrekt på tværs af de forskellige OS, uden at skulle omskrive
+                  ellertilpasse store dele af koden. Det er også her
+                  PIMPL-idiomet kommer som en effektiv løsning
+                </p>
+                <h4>The PIMPL / Cheshire Cat idiom - The how and why</h4>
+                <p>
+                  Pimpl står for <strong>Pointer to IMPLementation</strong>. Det
+                  indebærer indkapsling og abstraktion, reduktion af
+                  compile-time dependency og binær kompatibilitet
+                </p>
+                <ol>
+                  <li>Indkapsling og abstraktion</li>
+                  <ul>
+                    <li>
+                      Pimpl-idiomet skjuler implementeringsdetaljerne for en
+                      klasse fra dens brugere. Dette gør det muligt at ændre
+                      implementeringen uden at påvirke de dele af koden, der
+                      bruger klassen. Det forbedrer også modulariteten og gør
+                      koden lettere at vedligeholde.
+                    </li>
+                  </ul>
+                  <li>Compile-time dependency reduktion</li>
+                  <ul>
+                    <li>
+                      Ved at adskille grænsefladen fra implementeringen skal
+                      ændringer i implementeringen ikke genkompilere
+                      klientkoden, der bruger grænsefladen. Dette kan reducere
+                      kompileringstiden betydeligt, især i store projekter.
+                    </li>
+                  </ul>
+                  <li>Binær kompatibiliet</li>
+                  <ul>
+                    <li>
+                      Idiomet opretholder binær kompatibilitet på tværs af
+                      forskellige versioner af et bibliotek.
+                    </li>
+                  </ul>
+                </ol>
+                <p>
+                  Dette idiom kræver manuel hukommelsesstyring som øger risikoen
+                  for hukommelseslækager, så vær omhyggelig med
+                  hukommelsesallokering når du bruger det.
+                </p>
+                <h4>CPU / OS Architecture</h4>
+                <p>
+                  Når man arbejder med forskellige CPU- og OS-arkitekturer, skal
+                  man tage hensyn til forskelle i hardware og
+                  operativsystemfunktioner. Forskellige CPU-er kan have
+                  forskellige instruktioner og optimeringer, og forskellige
+                  operativsystemer har forskellige mekanismer for
+                  ressourcehåndtering, threading og synkronisering. Ved at bruge
+                  OS API og PIMPL-idiomet, kan man abstrahere sig fra disse
+                  forskelle, og skabe software der er mere bærbar og nemmer at
+                  vedligeholde.
+                </p>
+              </div>
+              <div class="right">
+                <h3>Effect on design/implementation</h3>
+                <h4>
+                  MQs (Message queues) used with pthreads contra MQ used in OO
+                  OS Api
+                </h4>
+                <p><strong>Pthreads</strong></p>
+                <ul>
+                  <li>
+                    <strong>Manuel håndtering</strong>: Når du bruger pthreads,
+                    skal du manuelt opsætte og håndtere ressourcerne. Du skal
+                    selv oprette køen, styre synkronisering, og sikre korrekt
+                    oprydning, for at undgår lækager.
+                  </li>
+                  <li>
+                    <strong>Kompleksitet</strong>: Designet kan blive meget
+                    komplekst da udvikleren skal håndter lavniveaus detaljer som
+                    synkronisering, fejlhåndtering og ressourcehåndtering.
+                  </li>
+                  <li>
+                    <strong>Fleksibilitet</strong>: Pthreads kan giver en god
+                    kontrol over trådhåndtering.
+                  </li>
+                </ul>
+                <p><strong>OO OS API</strong></p>
+                <ul>
+                  <li>
+                    <strong>Abstraktion</strong>: køhåndtering, synkronisering
+                    og fejlhåndtering bliver mere højniveau, og nemmere at
+                    implementer.
+                  </li>
+                  <li>
+                    <strong>Brugervenlighed</strong>: Det er mere brugervenligt,
+                    da det forenkler oprettelsn og håndteringen af tråde og
+                    message queues. Det reducerer mængden af kode der skal
+                    skrives.
+                  </li>
+                  <li>
+                    <strong>Indkapsling</strong>: Ved at indkapsle tråde og
+                    synkronisering i klasser, fremmer OO OS API bedre
+                    kodeorganisering, modularitet og genbrug.
+                  </li>
+                </ul>
+                <h4>RAII in use</h4>
+                <p>RAII Går ud på at allokeringen sker i objektets constructor. Når objektet går ud af scope, destrueres det derefter automatisk og ressourcerne frigives derfor.</p>
+                <h4>Using Threads before and now</h4>
+                <p>Nu, istedet for at bruge <em>pthread_create(), pthread_join()</em>, osv. kan vi skrive <em>osapi::Thread carThread(&car)</em> efter vi har oprettet et car objekt
+                og med denne thread kan vi skrive <em>carThread.start(); carThread.join()</em> osv. Dette gør det meget simplere at arbejde med threads, da programmet finder ud
+              af hvilke funktioner der skal kaldes alt efter dit styresystem, og du derfor ikke skal ændre i koden, eller skrive noget andet når du skal bygge til windows istedet for linux.</p>
+                <h3>
+                  UML Diagrams to implementation (class and sequence) - How?
+                </h3>
+                <p>
+                  Se fra slide <strong>20</strong> i
+                  <strong>OS API</strong> pdf'en
+                </p>
+              </div>
+            </div>
+            <h2 id="mds">MDS Message Distribution system</h2>
+            <div class="leftRight">
+              <div class="left">
+                <h3>Messaging distribution system - Why & how?</h3>
+                <p>Som det er nu, skal andre threads have adgang til en anden threads message queue, for at kunne sende en besked til denne thread.
+                  Den skal også vide at den specifikke thread gerne vil have dens data. Potentielle problemer med dette kan opstå når du laver dine threads.
+                  Hvilken kommer først, Kyllingen eller ægget? (Det er ægget der kom først siden ægget har eksisteret længe før kyllingen. Derimod må det være kyllingen
+                  der kom først hvis man snakker om et kyllinge-æg, da et kyllinge-æg kun kan komme fra en kylling, og kyllingen må være en "mutation" fra et andet æg-læggende
+                  dyr, og derfor kom den første kylling altså ikke fra et kyllinge-æg).
+                  <br>Der er to generelle kommunikationsformer:
+                </p>
+                <ol>
+                  <li>Kommunikation med request og confirms - To-vejs kommunikation</li>
+                  <ul>
+                    <li>Kendskab eller adgang til message queue er relevant</li>
+                    <li>Højere kobling, delt info</li>
+                    <li>Mulig tilgang - Specifik receiver design</li>
+                  </ul>
+                  <li>Status information - Indikation</li>
+                  <ul>
+                    <li>En-vejs kommunikation</li>
+                    <li>Kendskab til hinanden kan være irrelevant</li>
+                    <li>Anonymt system design kan bruges</li>
+                    <li>Lavere kobling</li>
+                    <li>Mulig tilgang - Broadcasting design</li>
+                    <ul>
+                      <li>Også kaldet MDS (Message Distribution System)</li>
+                    </ul>
+                  </ul>
+                </ol>
+                <h4><strong>Specifik receiver</strong></h4>
+                <p>Her har du en <strong>input thread</strong> som sender beskeder til <strong>info thread</strong>, der kan modtage beskeder fra andre også.
+                Her kommer et nyt niveau ind. <strong>Mediator</strong>. Der bliver lavet et post kontor / post office. Hver thread har ikke brug for at kende modtagerens Message queue.
+              Beskeden bliver sendt med navngivning (i string format)</p>
+                <h4><strong>Brodcasting</strong></h4>
+                <p>Her er det irrellevant, hvem modtageren er. Du kan have en thread for et thermometer, som sender, og to threads som subscriber. En logger thread og en alarm thread.
+                Thermometeret sender en ny temperatur hvert sekund til alle som er interreseret, men er egentlig ligeglad med hvem der subscriber.
+                Det er her vi har MDS.
+                </p>
+                <ul>
+                  <li>Subscriber = receiver</li>
+                  <li>Subscriber til en navngiven besked (std::string)</li>
+                  <ul>
+                    <li>Hvem - ved at give en message queue pointer</li>
+                    <li>Hvordan - Ved at give et ID til at modtage på, når en besked er klar</li>
+                  </ul>
+                  <li>Publisher</li>
+                  <ul>
+                    <li>Giver besked til alle subscribers, hver vil modtage beskeden der bliver sendt ud med deres eget ID</li>
+                  </ul>
+                </ul>
+                <p>Man kan også gennemgå det sådan her:</p>
+                <ul>
+                  <li>Hver modtager har sit eget lokale ID</li>
+                  <li>Vi har brug for et unikt globalt ID</li>
+                  <ul>
+                    <li>Brug det kvalificerede navn som en string</li>
+                  </ul>
+                  <li>Subscriber</li>
+                  <ul>
+                    <li>Subscriber ved brug af sin egen MsgQueue og lokalt ID når den modtager en ny besked med det Globale ID som navn</li>
+                  </ul>
+                  <li>Publisher</li>
+                  <ul>
+                    <li>Giver besked ved at sende en ny besked associeret med det globale ID</li>
+                  </ul>
+                </ul>
+                <p>Vi kan skrive noget pseudo kode for thermometer thread og logger/alarm thread som også står på slides:</p>
+                <h4>Logger thread</h4>
+                <ul>
+                  <li>Subscribe hos MDS for opdateringer ved temperatur</li>
+                  <ul>
+                    <li>Få adgang til en enkelt instans af MDS</li>
+                    <li>Relevante parametre:</li>
+                    <ul>
+                      <li>Globalt ID af beskeden du vil subscribe til</li>
+                      <li>Pointer til egen message queue</li>
+                      <li>ID af beskeden du vil modtage i din egen message queue</li>
+                      <ul>
+                        <li>OBS! Receiver har hvert deres eget lokale ID</li>
+                      </ul>
+                    </ul>
+                    <li>Kald MDS::subscribe(NEW_TEMP_VALUE_GLOB_ID, &mq, NEW_TEMP_VALUE_LOC_ID)</li>
+                  </ul>
+                  <li>Når du modtager NEW_TEMP_VALUE_LOC_ID, håndter beskeden korrekt</li>
+                  <ul>
+                    <li>Skriv til log</li>
+                  </ul>
+                </ul>
+                <h4>Thermometer thread</h4>
+                <ul>
+                  <li>Hvert sekund læs temperaturen fra en HW sensor</li>
+                  <li>Lav besked</li>
+                  <li>Broadcast besked</li>
+                  <ul>
+                    <li>Få adgang til en eneklt instans af MDS</li>
+                    <li>Kald MDS::send(NEW_TEMP_VALUE_GLOB_ID, tempMsg)</li>
+                  </ul>
+                </ul>
+                <p>Hvad opnår dette så? <br>
+                Det eliminerer nødvendigheden for en publisher at kende til og håndtere subscribers. Og flere subscribers får samme besked.<br>
+              For at kunne bruge dette, har du også nogle kriterier der skal mødes. Du har altså brug for:</p>
+              <ul>
+                <li>MDS der er oppe inden du skal bruge det</li>
+                <li>Brug af Singleton eller parse en pointer/reference</li>
+                <li>Beskeder skal kunne identificeres globalt ad strings</li>
+                <li>En-vejs kommunikation</li>
+              </ul>
+                <h3>The PostOffice design - Why and how?</h3>
+                <p>Post Office designet omhandler specifik receiver som blev hurtigt gennemgået ovenover. Her har vi brug for en <strong>input thread</strong> og en <strong>info thread</strong>
+                <br> Det var også her hvor vi ikke havde brug for at kende til modtagerens message queue. Vi skal også lære lidt om mediator. PostOffice design har fået dette navn fordi det minder om
+                et post kontor. Meddelelser bliver afleveret på kontoret, og bliver distribueret af post office. Der er altså ikke nogen direkte interaktion mellem sender og modtager.<br>
+              Noget pseudo kode for info thread og input thread:</p>
+              <h4>Info thread</h4>
+              <ul>
+                <li>Registrer hos post kontoret ved brug af:</li>
+                <ul>
+                  <li>Navn/ID - "InfoThread" og association med message queue</li>
+                  <li>Kalder PostOffice::register(std::string name, osapi::MsgQueue* mq)</li>
+                  <ul>
+                    <li>PostOffice::register(InfoThreadComInf::QUEUE, &mq)</li>
+                    <li>Hvor InfoThreadComInf::QUEUE == "InfoThread"</li>
+                  </ul>
+                </ul>
+              </ul>
+              <h4>Input thread</h4>
+              <ul>
+                <li>Send data til <em>InfoThread</em> på et tidspunkt</li>
+                <ul>
+                  <li>Bruger PostOffice for at sende en besked til modtageren med dens Navn/ID</li>
+                  <li>Kalder PostOffice::send(std::string name, unsigned long id, osapi::Message* msg)</li>
+                  <ul>
+                    <li>PostOffice::send(InfoThreadComInf::QUEUE, InfoThreadComInf::ID_START, starMsg)</li>
+                  </ul>
+                </ul>
+              </ul>
+                <h3>Decoupling achieved</h3>
+                <p>Ved brug af disse designs og principper, har vi fået hvad man kan kalde for en løs kobling. Altså ændringer i modtager kræver ikke nødvendigvis ændringer i senderen, og vice versa.
+                Denne kobling er foretrukket, da det sparer både tid og ressourcer, og er nemmere at ændre på et enkelt sted, frem for at skulle ændre alle steder, for at lave en måske lille ændring.
+                </p>
+              </div>
+              <div class="right">
+                <h3>Design considerations & implementation</h3>
+                <h3>
+                  Patterns per design and in relation to the MDS and PostOffice
+                  design
+                </h3>
+                <h4>GoF Singleton Pattern</h4>
+                <ul>
+                  <li>Udfordring</li>
+                  <ul>
+                    <li>System wide adgang til et givent objekt</li>
+                    <li>&rarr; Mange pointers og/eller referencer der skal sendes rundt</li>
+                  </ul>
+                  <li>Mulig løsning</li>
+                  <ul>
+                    <li>Singleton - e.g. kun én instans i hele systemet</li>
+                  </ul>
+                  <li>Brug</li>
+                  <ul>
+                    <li>MDS</li>
+                    <li>Config service</li>
+                    <li>Log service</li>
+                    <li>Enhver application wide service</li>
+                  </ul>
+                  <li>Ulemper</li>
+                  <ul>
+                    <li>Globale variable, som:</li>
+                    <ul>
+                      <li>Serializes acces needed</li>
+                    </ul>
+                  </ul>
+                  <li>Livstid</li>
+                  <ul>
+                    <li>Hvem opretter?</li>
+                    <li>Hvem sletter? og hvornår?</li>
+                  </ul>
+                </ul>
+                <h4>GoF Observer Pattern</h4>
+                <ul>
+                  <li>Udfordring</li>
+                  <ul>
+                    <li>Behøver notifikation ved ændring</li>
+                    <li>En-til-mange forhold - broadcasting</li>
+                  </ul>
+                  <li>Mulig løsning</li>
+                  <ul>
+                    <li>Publisher/subscriber (eller observatør)</li>
+                  </ul>
+                  <li>Brug</li>
+                  <ul>
+                    <li>MDS</li>
+                    <li>Knap trykket på GUI &rarr; kædereaktion (lukke ned + luk program)</li>
+                    <li>Sensor skifter værdi &rarr; flere enheder vil notificeres</li>
+                  </ul>
+                  <li>Ulemper</li>
+                  <ul>
+                    <li>Opdateringer koster gennem systemet</li>
+                    <li>En subscriber kan tage "lang" tid om at håndtere en notifikation</li>
+                  </ul>
+                </ul>
+                <h4>GoF Mediator Pattern</h4>
+                <ul>
+                  <li>Udfordring</li>
+                  <ul>
+                    <li>Behøver løs kobling</li>
+                    <li>Fjerne nødvendigheden med kendskab til forskellige objekter (MsgQueues)</li>
+                  </ul>
+                  <li>Mulig løsning</li>
+                  <ul>
+                    <li>Mediator</li>
+                  </ul>
+                  <li>Brug</li>
+                  <ul>
+                    <li>MDS</li>
+                    <li>Grafik system - draw() kald er sendt til interreserede parter</li>
+                    <li>PostOffice</li>
+                  </ul>
+                  <li>Fordele</li>
+                  <ul>
+                    <li>Centraliserer kontrol</li>
+                    <li>Focuserer på hvordan objekter interagerer og ikke på adfærd</li>
+                    <li>Enheder behøver ikke kende til hinanden</li>
+                  </ul>
+                  <li>Ulemper</li>
+                  <ul>
+                    <li>Centraliserer kontrol</li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+            <h2 id="resHandle">Resource handling</h2>
+            <div class="leftRight">
+              <div class="left">
+                <h3>RAII - What and why?</h3>
+                <p>
+                  <strong>RAII</strong> står for
+                  <strong>Resource Acquisition Is Initialization</strong>. Her
+                  indkapsler du alle ressourcer i sit eget objekt, der håndterer
+                  deres livstid og putter objekten på stacken. Det hjælper med,
+                  at spare på hukommelsen. Også på mutexes hjælper det med at
+                  undgå deadlocks. Hvordan ved jeg ikke lige helt men det var noget der blev sagt i chatten så det må være rigtigt.
+                </p>
+                <h3>Copy construction and the assignment operator</h3>
+                <p>Copy construction og assignment operator er dele af "the rule of three" som er en tommelfingerregel i C++. Den består af <strong>Destructor, Copy constructor</strong> og <strong>Coppy assignment operator</strong>. 
+                De er specielle member functions i en klasse. Skal du have én, skal du have alle. Altså du skal altid have disse tre. "The rule of five" har samme princip, med samme funktioner, bare to ekstra, som er:
+              <strong>Move constructor</strong> og <strong>move assignment operator</strong>, som vi ikke vil gå i dybden med.</p>
+              <ul>
+                <li><strong>Destructor</strong> - Kalder en destructor af alle objektets klasse-type medlemmer</li>
+                <li><strong>Copy constructor</strong> - Konstruerer alle objektets medlemmer fra de korresponderende medlemmer af argumentet. Du kalder altså en copy constructor for objektets klasse-type medlemmer
+                og en normal assignment af alle ikke-klasse-type medlemmer</li>
+                <li><strong>Copy assignment operator</strong> - Gør basically det samme, men implementeres lidt anderledes. Her sørger du dog for at slette alt eksisterende data på dit objekt inden du kopierer</li>
+              </ul>
+              </div>
+              <div class="right">
+                <h3>What is the concept behind a Counted SmartPointer?</h3>
+                <p>En counted smartpointer er en type af smart pointer der håndterer livstiden for et objekt gennem reference counting. Den sikrer at objekter sikkert bliver slettet, når der ikke længere er brug for dem
+                  Når reference count er på 0, betyder det altså at der ikke er flere der peget på objektet, og det kan derfor sikkert slettes, så du ikke bruger unødvendig plads og ressourcer.
+                </p>
+                <h3>
+                  What is boost::shared_ptr&lt;&gt; and how do you use it?
+                </h3>
+                <p>boost::shared_ptr er smart i forhold til ressource håndtering, da den rydder op for dig når du forlade scope. Du behøver altså ikke tænke på, om du har slettet dine objekter
+                  når du ikke skal bruge dem mere. Det er en counted smartpointer, som altså håndterer livstiden for objekter.
+                </p>
+              </div>
+
+            </div>
+            <p>Se mads D.s pdf her!</p>
+            <iframe src="pdf/SW3ISU ORAL EXAM - CHEATSHEET - MADS DITTMANN VILLADSEN.pdf" height="1000px" width="100%"></iframe>
+            <p>hej</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>Copyright 2024, Oliver B. Rosenkilde</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>
+      // Initialize highlight.js
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
