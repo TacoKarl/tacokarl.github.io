@@ -1,9 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 import NavBar from "./components/NavBar.tsx";
-import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import First from "./pages/firstSemester/First.tsx";
 import Second from "./pages/secondSemester/Second.tsx";
