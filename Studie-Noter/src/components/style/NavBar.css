@@ -1,12 +1,33 @@
 /* Navbar.css */
-nav {
+.topNavBar {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #000000;
+    background-color: #121212;
     padding: 0.5rem;
-    border-radius: 0.5rem;
     width: 100%;
+    color: white;
+}
+
+.sidebar{
+    position: fixed;
+    top: 40px;
+    left: 0;
+    background-color: #121212;
+    padding: 0.5rem;
+    width: 3%;
+    border-bottom-right-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+.sidebar .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px; /* Space between links */
+    margin-left: 10px; /* No left margin for better alignment */
+    display: block; /* Ensure block display for vertical stacking */
 }
 
 .nav-link {

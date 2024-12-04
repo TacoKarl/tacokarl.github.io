@@ -1,12 +1,12 @@
 import React from "react";
 import {NavLink} from 'react-router-dom'
 import './style/NavBar.css'
-import '../assets/style.css'
+import '../../public/style.css'
 
 
 const NavBar: React.FC = () => {
     return (
-        <nav>
+        <nav className="topNavBar">
             <NavLink to="/" className="nav-link">Home</NavLink>
             <NavLink to="/first" className="nav-link">1st Semester</NavLink>
             <NavLink to="/second" className="nav-link">2nd Semester</NavLink>
