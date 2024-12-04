@@ -1,0 +1,1760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Teknologi AU</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css"
+    />
+    <link href="../style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id="forumHead">Welcome to the 3rd semester!</h1>
+    <nav id="navigation">
+      <a href="/" id="noUnderline">Home</a>
+      <a href="../third" id="noUnderline">3rd semester</a>
+    </nav>
+    <div class="content">
+      <aside>
+        <div class="course">
+          <a href="DOA.html">DOA</a>
+          <div class="subCourse">
+            <a href="#doaTitle">Top</a>
+            <a href="searching">Searching</a>
+            <a>Trees and heaps</a>
+            <a>Big O notation</a>
+            <a>Recursion</a>
+            <a>Stacks, queues and matrices</a>
+            <a>Priority queues</a>
+            <a>Sorting</a>
+            <a>Maze</a>
+            <a href="pdf/DOA.html">Slides</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="DSB.html">DSB</a>
+          <div class="subCourse">
+            <a>Sampling og amplitude</a>
+            <a>Aliasering</a>
+            <a>Envelope</a>
+            <a>DFT, IFT, FFT, SDFT</a>
+            <a>FIR-, IIR-filtre</a>
+            <a>Signal flow graphs</a>
+            <a>PSD</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="HAL.html">HAL</a>
+          <div class="subCourse">
+            <a>Linux kernel</a>
+            <a>Linux modules</a>
+            <a>Interrupts</a>
+            <a>Device tree</a>
+            <a>Bus interface</a>
+            <a>Attributes and timers</a>
+            <a>Memory management</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="ISU.html">ISU</a>
+          <div class="subCourse">
+            <a>Different OS</a>
+            <a>Programming in Linux</a>
+            <a>Processes and threads</a>
+            <a>Thread synch</a>
+            <a>Thread comms</a>
+            <a href="ISU.html#osApi">OS API</a>
+            <a>Resource handling</a>
+            <a>Message system</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="NGK.html">NGK</a>
+          <div class="subCourse">
+            <a>Application layer</a>
+            <a>Transport layer</a>
+            <a>Network layer</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="PRJ3.html">PRJ3</a>
+          <div class="subCourse">
+            <a>Magichess</a>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <h2 id="doaTitle">Algorithms and Data Structures</h2>
+        <div class="topics">
+          <p class="instructions">
+            Scroll down or hover over the course to see what topics you can read
+            about. <br />All the slides from the classes can be seen
+            <a id="aFormat" href="pdf/DOA.html">here</a>.
+          </p>
+          <h2 id="searching">Searching</h2>
+          <div class="leftRight">
+            <div class="left">
+              <h3 id="bfs">BFS (Breadth-first Search)</h3>
+              <p>
+                BFS, also called Breadth-first search, finds the shortest path
+                to target in an unweighted graph. It searches in all direction
+                regardless of cost or proximity to the target. It uses a
+                priority queue (FIFO). It explores all the neighbouring nodes
+                from the current level before moving on to the next level. A
+                quick overview on how BFS works:
+              </p>
+              <ol>
+                <li><strong>Initialization</strong></li>
+                <ul>
+                  <li>Begins with a start node</li>
+                  <li>
+                    Use a queue to keep track of nodes that need to be explored
+                  </li>
+                  <li>
+                    Maintains a set or a list to keep track of already visited
+                    nodes, to avoid exploring nodes more than once
+                  </li>
+                </ul>
+                <li><strong>Algorithm steps</strong></li>
+                <ul>
+                  <li>Enqueue the start node and mark it as visited</li>
+                  <li>While queue is not empty</li>
+                  <ul>
+                    <li>Dequeue a node from the front of the queue</li>
+                    <li>
+                      Process the dequeued node (i.e. check if it is the
+                      target.)
+                    </li>
+                    <li>
+                      Enqueue all unvisited neghbouring nodes of the duqueued
+                      node and mark them as visited
+                    </li>
+                  </ul>
+                </ul>
+              </ol>
+              <p>
+                This algorithm finds the shortest path in an unweighted graph.
+              </p>
+              <h3 id="dijkstrasAlgorithm">Dijkstras algorithm</h3>
+              <p>
+                Dijkstras algorithm solves the shortest path problem in a
+                weighted graph, with non-negative weights. It computes the
+                shortest distance from a source node to all other nodes in the
+                graph. It starts by setting the distance from the source node to
+                all other nodes to infinity (&infin;), and then updates if a
+                "shorter" path is found. This is call relaxation.<br />
+                A quick overview of this algorithm:
+              </p>
+              <ol>
+                <li><strong>Initialization</strong></li>
+                <ul>
+                  <li>
+                    Assign a tentative distance value to every node: Set it to 0
+                    for the initial node and to &infin; for all other nodes
+                  </li>
+                  <li>Set the initial node to the current node</li>
+                  <li>
+                    Create a priority queue to hold nodes, prioritized by their
+                    tentative distance values
+                  </li>
+                </ul>
+                <li><strong>Algorithm steps</strong></li>
+                <ul>
+                  <li>While there are unvisited nodes:</li>
+                  <ul>
+                    <li>
+                      Extract the node with the smallest tentative value
+                      (labeled <em>u</em>)
+                    </li>
+                    <li>For eachj neighbour <em>v</em> in <em>u</em></li>
+                    <ul>
+                      <li>
+                        Calculate the alternative path distance from the start
+                        node to <em>v</em> through <em>u</em>
+                      </li>
+                      <li>
+                        If this alternative path distance is smaller than the
+                        current tentative distance of <em>v</em>, update the
+                        tentative distance of <em>v</em>
+                      </li>
+                      <li>
+                        If <em>v</em> has not been visited, add it to the
+                        priority queue
+                      </li>
+                    </ul>
+                    <li>Mark the node <em>u</em> as visited</li>
+                    <li>
+                      If the smallest tentative distance among the unvisited
+                      notes are &infin;, stop (Remaining nodes areinaccessible)
+                    </li>
+                  </ul>
+                </ul>
+              </ol>
+            </div>
+            <div class="right">
+              <h3 id="a*">The A* algorithm</h3>
+              <p>
+                A* is an algorithm that is direction based. It still uses a
+                priority queue and uses three parameters. How many steps from
+                start, How many steps to target (Ignoring walls), and a total of
+                these two. Then the smallest total gets put first in the queue.
+                If there are more squares with the same total, the next square
+                will be put in a queue behind the first square. So to
+                summarize:<br />
+                A* is a heuristic based algorithm. It uses
+                <strong><em>g(n)</em></strong> which is the cost to get from the
+                start node to the current node.<br />
+                <strong><em>h(n)</em></strong> is the heuristic estimate from
+                current node to the target node, ignoring walls.<br />
+                Lastly <strong><em>f(n)</em></strong> is the total cost of the
+                heuristic and the cost to the current node.
+                <em>f(n) = g(n) + h(n)</em>
+              </p>
+              <p>The A* algorithm works as follows</p>
+              <ul>
+                <li>
+                  Nodes are added in a priority queue with their
+                  <em>f(n)</em> value
+                </li>
+                <li>
+                  The node with the smallest <em>f(n)</em> value is dequeued
+                  first
+                </li>
+                <li>
+                  If multiple nodes have the same <em>f(n)</em> value, they are
+                  dequeued is the order they where added
+                </li>
+              </ul>
+              <p>
+                This process continues until the target node is found or all
+                possible nodes have been explored. Also note, that you keep
+                track on which node you used to come to the current node for
+                backtracking.<br />
+                You can download the code for assignment week 9-10 which covers
+                some of these search patterns
+                <a id="aFormat" href="code/Week9-10.zip" download>here</a>.
+              </p>
+            </div>
+          </div>
+          <h2 id="trees">Trees and Heaps</h2>
+          <div class="leftRight">
+            <div class="left">
+              <div id="minHeap">
+                <h3>Min Heap</h3>
+                <p>
+                  The minimum heap is a binary tree just like max heap which are
+                  used to implement priority queues. The min heap stores the
+                  lowest value at its root, and the children of each node are
+                  greater than or equal to the parent. The priority can
+                  mathematically be expressed as such: <br />
+                </p>
+                <p id="equation">
+                  <strong>heap[i] &le; heap[i*2+1]</strong>
+                  and
+                  <strong>heap[i] &le; heap[i*2+2]</strong>.
+                </p>
+                <p>
+                  The tree is filled on all levels except the last level, which
+                  is filled from left to right. <br />Operations usually used
+                  for a min heap include:
+                </p>
+                <ul>
+                  <li>
+                    Insertion: add a new element at the end of the tree and use
+                    'sift up' to restore heap priority
+                  </li>
+                  <li>
+                    Deletion (of min element): deleting the root, replace it
+                    with the last element in the heap and use 'sift down' to
+                    restore heap priority
+                  </li>
+                  <li>findMin: the minimum element is always the root</li>
+                </ul>
+                <p>
+                  A good source on the visualization of heap and other
+                  algorithms can be found
+                  <a
+                    id="aFormat"
+                    href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
+                    >here</a
+                  >
+                </p>
+              </div>
+              <div>
+                <h3 id="binary">Binary seach trees</h3>
+                <p>
+                  A Binary seach tree is a datastructure with specific
+                  charactaristica that makes it effective with search, insert
+                  and delete operations. These are some of the principles:
+                </p>
+                <ul>
+                  <li>
+                    Value of the node
+                    <ul>
+                      <li>Every node has a value</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Left subtree
+                    <ul>
+                      <li>
+                        Every node in the left subtree of the node has a lesser
+                        value
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Right substree
+                    <ul>
+                      <li>
+                        Every node in the right subtree of the node has a
+                        greater value
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Recursive attributes
+                    <ul>
+                      <li>Every subtree is also a binary search tree</li>
+                    </ul>
+                  </li>
+                </ul>
+                <p>Below, you see some binary search trees:</p>
+                <pre>
+     8                            30                            20
+   /   \                        /    \                        /    \
+  3    10                     13      45                    12      23
+ / \     \                   /  \    /  \                 /   \
+1   6    14                 3   23  32   87              4     14
+   / \   /                  \   /   /   /  \            /
+  4   7 13                   5 16  31  46  99          2 
+              </pre
+                >
+                <p>
+                  These all fulfill the previous statemens about the left and
+                  right subtree, also the value of the nodes, and the recursive
+                  subtrees. Insertion, deleting and searching all takes an
+                  average of O(log n), but in a worst case, it will take O(n) if
+                  the BST (Binary search tree) is unbalanced. To improve this,
+                  AVL-trees can be used, as they are balanced trees. Shown above
+                  are two balanced trees and one unbalanced. The balanced tree
+                  is defined by the height of the two child subtrees differ by
+                  no more than one. As you can see, the last BST is unbalanced
+                  because of this.
+                </p>
+              </div>
+              <div>
+                <h3>AVL Trees</h3>
+                <p>
+                  AVL trees are balanced BST's. AVL tolerate
+                  <strong
+                    >difference in height of at most one between left and right
+                    subtrees of any node</strong
+                  >
+                  This means that insertion and deletion can cause a violation
+                  in the balance of the tree, given that after one of these
+                  operations, a left and a right subtree can have a depth
+                  difference of more than one. If this occurs, you'll have to
+                  rebalance the tree. There are rotations for simple violations,
+                  and double rotations for more complicated violations. There
+                  are two kinds of double rotations. The left-right rotation,
+                  and the right-left rotation. This is simply the order of both
+                  rotations, either left or right rotations first, followed by
+                  the opposite rotations.
+                </p>
+                <pre>
+                  Study this LR (left-right rotation)
+                      z                  z                x
+                     / \                / \             /   \
+                    y   T4             x   T4          y     z
+                   / \                / \             / \   / \
+                  T1  x              y   T3          T1 T2 T3 T4
+                     / \            / \              
+                    T2 T3         T1   T2
+                </pre>
+                <p>
+                  Notice that the subtree x causes a depth difference bigger
+                  than one at the y and T4 level. It is on the left subtree from
+                  the root, and on the right subtree of its parent. Would it
+                  have been on the right subtree of the root, and then on the
+                  left subtree of its parent, you would've needed a RL rotation
+                  (right-left).
+                </p>
+              </div>
+            </div>
+            <div class="right">
+              <div id="maxHeap">
+                <h3>Max Heap</h3>
+                <p>
+                  The max heap is the opposite of min heap, which means that the
+                  root of the tree is now the maximum element. And the children
+                  are now less than or equal to the root. In min heap, the
+                  children are greater than or equal to their parent node. This
+                  can also be expressed mathematically like so:<br />
+                </p>
+                <p id="equation">
+                  <strong>heap[i] &ge; heap[i*2+1]</strong>
+                  and
+                  <strong>heap[i] &ge; heap[i*2+2]</strong>.
+                </p>
+                <p>
+                  The tree is also filled on all levels except for the last
+                  which is filled from left to right. As with min heap, usual
+                  operations are:
+                </p>
+                <ul>
+                  <li>
+                    Instertion: add new element to the end of the heap and use
+                    'sift up' to restore heap priority
+                  </li>
+                  <li>
+                    Deletion (of max element): Remove the root element, replace
+                    with the last element and use 'sift down' to restore heap
+                    priority
+                  </li>
+                  <li>Find max: the maximum element is always at the root</li>
+                </ul>
+              </div>
+              <div>
+                <h3 id="traversing">Traversing</h3>
+                <p>
+                  There are four different kind of traversing.
+                  <strong>Inorder</strong>, <strong>Preorder</strong>,
+                  <strong>Postorder</strong>, and <strong>Level-order</strong>.
+                  These have been present in previous Exam tests. Let's run
+                  through them all quickly!
+                </p>
+                <ul>
+                  <li>Inorder Traversing</li>
+                  <ul>
+                    <li>
+                      <strong>Order</strong>: Left subtree, Root, Right subtree
+                    </li>
+                    <li>
+                      <strong>Usage</strong>: Retrieve nodes in a non-decreasing
+                      order in a BST
+                    </li>
+                  </ul>
+                  <li>Preorder Traversing</li>
+                  <ul>
+                    <li>
+                      <strong>Order</strong>: Root, Left subtree, Right subtree
+                    </li>
+                    <li>
+                      <strong>Usage</strong>: Make copy of the tree or to
+                      evaluate expressions in expression trees
+                    </li>
+                  </ul>
+                  <li>Postorder traversing</li>
+                  <ul>
+                    <li>
+                      <strong>Order</strong>: Left subtree, Right subtree, Root
+                    </li>
+                    <li>
+                      <strong>Usage</strong>: To delete or free nodes in the
+                      tree and to evaluate expressions in expression trees.
+                    </li>
+                  </ul>
+                  <li>Level-order Traversing</li>
+                  <ul>
+                    <li>
+                      <strong>Order</strong>: Visits nodes level-by-level from
+                      top to bottom and from left to right in each level
+                    </li>
+                    <li>
+                      <strong>Usage</strong>: In breadth-first search (BFS) and
+                      is useful for finding the shortest path in unweighted
+                      trees.
+                    </li>
+                  </ul>
+                </ul>
+                <pre>
+                    consider the following BST
+                               1
+                              / \
+                             2   3
+                            / \ / \
+                           4  5 6  7
+                </pre>
+                <p>
+                  Using the different traversal methods the nodes are visited in
+                  the following orders:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Inorder traversal</strong>: [4, 2, 5, 1, 6, 3, 7]
+                  </li>
+                  <li>
+                    <strong>Preorder traversal</strong>: [1, 2, 4, 5, 3, 6, 7]
+                  </li>
+                  <li>
+                    <strong>Postorder traversal</strong>: [4, 5, 2, 6, 7, 3, 1]
+                  </li>
+                  <li>
+                    <strong>Level-order traversal</strong>: [1, 2, 3, 4, 5, 6,
+                    7]
+                  </li>
+                </ul>
+                <p>
+                  These traversal methods serve different purposes and are
+                  suitable for various tasks related to tree structures.
+                </p>
+              </div>
+              <div id="hashing">
+                <h3 id="hashing">Hashing</h3>
+                <p>
+                  There are different types if hashing, that if a spot is
+                  occupied, has different logic of how to find an unoccupied
+                  spot. Usually, hashtables has sizes of prime numbers, since
+                  you use the modulus operator (%) and if you have a number that
+                  is not a prime number, more numbers would fit the equation
+                  <strong>num % size == 0</strong>. <br />
+                  The general idea of hashing is storing an element in an array
+                  with a <strong>key</strong>. The key is used to then retrieve
+                  the element when you need it. Generally you go from index 0 to
+                  <em>tableSize - 1</em>, so from the first element to the last.
+                  For a more thorough explenation, see Chapter 5 in Data
+                  Structures and Algorithm Analysis in C++.<br />
+                  If you use integers as the key, a simple way to hash the
+                  element would be <em>key % tableSize</em>. This is the reason
+                  to use primes, to not store 10 and 20 together as an example.
+                </p>
+                <p>Different kinds of probing include:</p>
+                <ul>
+                  <li>
+                    Linear probing
+                    <ul>
+                      <li>
+                        If the index already is occupied, find the next
+                        unoccupied index to store the key. (increment by 1 until
+                        an empty space is found)
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Quadratic probing
+                    <ul>
+                      <li>
+                        If a collision appears, you start with i = 1 and go up
+                        until you find an empty space with the formula i<sup
+                          >2</sup
+                        >
+                      </li>
+                      <li>1<sup>2</sup>, 2<sup>2</sup>, 3<sup>2</sup>...</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Double hashing
+                    <ul>
+                      <li>
+                        This is the use of another hash function, so you have
+                        two hash functions
+                      </li>
+                      <li>
+                        If hash(x) results in a collision, then you use
+                        i*hash<sub>2</sub>(x)
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Random probing
+                    <ul>
+                      <li>
+                        Uses a random number generator initialized with the key.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Secondary clustering
+                    <ul>
+                      <li>
+                        Is an issue with quadradic probing where two different
+                        values, follow the same probing sequence
+                      </li>
+                      <li>The last two aren't covered in the book</li>
+                    </ul>
+                  </li>
+                </ul>
+                <h4>Rehashing</h4>
+                <p>
+                  If the elements occupy 70% or more of the hash table,
+                  Rehashing is recommended. You do this by creating a new table
+                  which has the size of the next prime number after
+                  <em>tableSize*2</em>. The elements in the old table are now
+                  scanned and put into the new and bigger table. (see chapter
+                  5.5 in Data Structures and Algorithm Analysis in C++)
+                </p>
+              </div>
+            </div>
+          </div>
+          <p>There are different types of hashing</p>
+          <h2 id="bigO">Big O notation</h2>
+          <p>
+            Big O notation has two parts.
+            <strong>Time complexity</strong> and the
+            <strong>space complexity</strong>.
+          </p>
+          <div class="leftRight">
+            <div class="left" id="timeComplexity">
+              <h3>Time complexity</h3>
+              <p>
+                <ins>Time complexity</ins> represent how much time the code uses
+                to execute. An example would be a for loop that loop through the
+                length of an object. This would have the time complexity of
+                O(n), where n represents the length of the object. A nested for
+                loop that does this two times, then have a time complexity of
+                O(n<sup>2</sup>). There are different time complexities and to
+                summarise, we have
+                <em
+                  >O(1), O(n), O(log(n)), O(nlog(n)), O(n<sup>x</sup>),
+                  O(x<sup>n</sup>)</em
+                >
+                and <em>O(n!)</em>.<br />
+                What exactly is Big O notation? <br />
+                <q
+                  >Big O Notation is a mathematical notation used to describe
+                  the upper bound of an algorithm’s time complexity in terms of
+                  how it grows relative to the size of the input.</q
+                ><br />
+                A table summing up these notations can be seen
+                <a href="#oTable">below</a>
+              </p>
+              <table border="1" id="oTable">
+                <tr>
+                  <th>Big O Notation classes</th>
+                  <th>f(n)</th>
+                  <th>Number of operations, n = 10</th>
+                  <th>Execution time (1 instruction/μsec)</th>
+                </tr>
+                <tr>
+                  <td>Constant</td>
+                  <td>O(1)</td>
+                  <td>1</td>
+                  <td>1 μsec</td>
+                </tr>
+                <tr>
+                  <td>Logarithmic</td>
+                  <td>O(log(n))</td>
+                  <td>3.32</td>
+                  <td>3 μsec</td>
+                </tr>
+                <tr>
+                  <td>Linear</td>
+                  <td>O(n)</td>
+                  <td>10</td>
+                  <td>10 μsec</td>
+                </tr>
+                <tr>
+                  <td>O(nlog(n))</td>
+                  <td>O(nlog(n))</td>
+                  <td>33.2</td>
+                  <td>33 μsec</td>
+                </tr>
+                <tr>
+                  <td>Quadratic</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>10<sup>2</sup></td>
+                  <td>100 μsec</td>
+                </tr>
+                <tr>
+                  <td>Cubic</td>
+                  <td>O(n<sup>3</sup>)</td>
+                  <td>10<sup>3</sup></td>
+                  <td>1 msec</td>
+                </tr>
+                <tr>
+                  <td>Exponential</td>
+                  <td>O(2<sup>n</sup>)</td>
+                  <td>1024</td>
+                  <td>10 msec</td>
+                </tr>
+                <tr>
+                  <td>Factorial</td>
+                  <td>O(n!)</td>
+                  <td>10!</td>
+                  <td>3.6288 sec</td>
+                </tr>
+              </table>
+              <p>
+                As we can see, the most optimal is O(1) since it is the fastest.
+                And since we can have these time complexities, some algorithms
+                are better than others
+              </p>
+            </div>
+
+            <div class="right" id="spaceComplexity">
+              <h3>Space complexity</h3>
+              <p>
+                Space complexity is the amount of space a function or a program
+                takes up. It has the same notation of O(n), O(1) and so on. How
+                much space it takes up with a given input is preferably O(1) but
+                many times this is not the case. A visualization of how much
+                space and time it takes can be seen on the figure below.
+              </p>
+              <img
+                title="Big O graph"
+                src="img/bigO.png"
+                alt="Big O graph of time as a function of input"
+              />
+            </div>
+          </div>
+          <div>
+            <h2 id="recursion">Recursion</h2>
+            <div class="leftRight">
+              <div class="left">
+                <p>
+                  Recursion is basically a for loop, but it makes code look
+                  cleaner and easier to read. It is a function that calls
+                  itself. An example can be seen below.
+                </p>
+                <pre><code class="cpp">
+int sumDivisableBy3(int N) {
+  int sum = 0;
+  if (N <= 0) {
+    return 0;
+  } else if (N % 3 == 0) {
+    sum += N;
+    cout << "added " << N << " to sum" << endl;
+    N = N - 2; # subtract 2 and then subtract 1 more 
+    # when you got out of the if statement
+  }
+  sum += sumDivisableBy3(N - 1);
+  return sum;
+}
+            </code></pre>
+                <p>
+                  As you can see, this function calls itself. It also has a
+                  default case where if N &le; 0 it returns 0. This is where the
+                  function stops and it has the time complexity of O(N).
+                </p>
+              </div>
+              <div class="right">
+                <p>
+                  Another simple recursive function is the fibbonacci function
+                  which can be seen below:
+                </p>
+                <pre><code class="cpp">
+unsigned int fib(int n) {
+  if(n==0 || n==1) {
+    return n;
+  }
+  else {
+    return fib(n-1) + fib(n-2); 
+  }
+}
+              </code></pre>
+                <p>
+                  This function however isn't optimal since it has a time
+                  copmlexity of O(2<sup>n</sup>). Sometimes the fibonacci
+                  function is called with a value that has already been acall
+                  before.
+                </p>
+              </div>
+            </div>
+            <div id="stacks">
+              <h2 id="stacksh">Stacks, queues and heaps</h2>
+              <div class="leftRight">
+                <div class="left"></div>
+                <div class="right"></div>
+              </div>
+            </div>
+            <div id="priority">
+              <h2 id="priorityQueues">Priority Queues</h2>
+              <div class="leftRight">
+                <div class="left"></div>
+                <div class="right"></div>
+              </div>
+            </div>
+            <div id="sorting">
+              <h2 id="sortingh">Sorting</h2>
+              <div class="leftRight">
+                <div class="left">
+                  <p>
+                    The C++ STL already includes sorting in the form og the
+                    function
+                    <strong>void sort(Iterator begin, Iterator end)</strong>.
+                    Array sorting has been covered in lecture 6, if you'd like
+                    to look at the slides. We will cover Merge sort and Quick
+                    sort in these notes.<br />
+                    The code for the Week 5-6 assignment which covers sorting
+                    and recursion can be downloaded
+                    <a id="aFormat" href="code/Week5-6.zip" download>here</a>.
+                  </p>
+                  <h3>Merge sort</h3>
+                  <p>
+                    Merge sort uses a principle called
+                    <strong>divide-and-conquer</strong>. Basically, youd divide
+                    the array into two. The left and the right side of the
+                    array. It can be divided into three functions. One external,
+                    that calls a function, that uses this divide-and-conquer
+                    principle, this function then merges it all together in the
+                    end.<br />
+                    It will look like this:
+                  </p>
+                  <pre><code class="cpp">
+// Merging
+template &lt;typename Comparable&gt;
+void merge(std::vector&lt;Comparable&gt;& a, std::vector&lt;Comparable&gt; tmp, 
+                  int leftPos, int rightPos, int rightEnd){
+  int leftEnd = righPos - 1;
+  int pos = leftPos;
+  int numElements = rightEnd - leftPos + 1;
+
+  while (leftPos &le; leftEnd && righPos &le; righEnd){
+    if (a[leftPos] &le; a[rightPos]){
+      tmp[pos++] = std::move(a[leftPos++]);
+    }
+    else{
+      tmp[pos++] = std::move(a[rightPos++]);
+    }
+  }
+
+  while (leftPos &le; leftEnd){ // copy the rest of the first half
+    tmp[pos++] = std::move(a[leftPos++]);
+  }
+
+  while (rightPos &le; rightEnd) { // copy the rest of the right half
+    tmp[pos++] = std::move(a[rightPos++]);
+  }
+
+  for (int i = 0; i &lt; numElements; ++i, --righEnd) { //copy tmp back
+    a[rightEnd] = std::move(tmp[rightEnd]);
+  }
+}
+template &lt;typename Comparable&gt;
+void mergeSort(std::vector&lt;Comparable&gt;& a, std::vector&lt;Comparable&gt;& tmp,
+                  int left, int right) {
+  if (left &lt; right){
+    int center = (left + right) / 2;
+    mergeSort(a, tmp, left, center);
+    mergeSort(a, tmp, center + 1, right);
+    merge(a, tmp, left, center + 1, right);
+  }
+}
+template &lt;typename Comparable&gt;
+// external function:
+void mergeSort(std::vector&lt;Comparable&gt;& a) {
+  std::vector&lt;COmparable&gt; tmp(a.size());
+  mergeSort(a, tmp, 0, a.size() - 1);
+}
+                </code></pre>
+                  <p>
+                    This successfully uses the divide-and-conquer method, by
+                    recursively dividing the array into smaller halves until
+                    there are only arrays of 1 element left, and then merges
+                    them together in the end.
+                  </p>
+                </div>
+                <div class="right">
+                  <h3>Quick sort</h3>
+                  <p>
+                    Quick sort is covered in chapter 7.7 in the book Data
+                    Structures and Algorithm Analysis in C++.<br />
+                    Like merge sort, quick sort is also a divide-and-conquer
+                    recursive algorithm. You have 3 'groups', and you create
+                    them by arbitrarily chosing an item at first. The 3 groups
+                    consists of the items equal to the chosen item, items
+                    smaller, and items larger than the chosen item. A direct
+                    implementation of quicksort can be seen below:
+                  </p>
+                  <pre><code class="cpp">
+template &lt;typename Comparable&gt;
+void SORT (std::vector&lt;Comparable&gt;& items){
+  if (items.size() &gt; 1){
+    std::vector&lt;Comparable&gt; smaller;  
+    std::vector&lt;Comparable&gt; same;
+    std::vector&lt;Comparable&gt; larger;
+
+    auto chosenItem = items[items.size() / 2];
+
+    for (auto& i : items){
+      if (i &lt; chosenItem)
+        smaller.push_back(std::move(i));
+      else if (chosenItem &lt; i)
+        larger.push_back(std::move(i));
+      else
+        same.push_back(std::move(i));
+    }
+
+    SORT(smaller); // recursive call
+    SORT(larger); // recursive call
+
+    std::move(begin(smaller), end(smaller), begin(items));
+    std::move(begin(same), end(same), begin(items) + smaller.size());
+    std::move(begin(larger), end(larger), end(items) - larger.size());
+  }
+}
+                </code></pre>
+                  <p>
+                    But this is not a complete quicksort, allthough this works,
+                    the implementation of quicksort looks similar to mergesort.
+                    Having an external function, that calls another function. It
+                    will looke like below:
+                  </p>
+                  <pre><code class="cpp">
+template &lt;typename Comparable&gt;
+void quickSort(std::vector&lt;Comparable&gt;& a){
+  quickSort(a, 0, a.size() - 1);
+}
+
+template &lt;typename Comparable&gt;
+void quickSort(std::vector&lt;Comparable&gt; a, int left, int right){
+  if (left + 10 &le; right){
+    const Comparable pivot = median3 (a, left, right);
+    
+    int i = left, j = right - 1;
+    for (; ;){
+      while (a[++i] &lt; pivot){}
+      while (pivot &lt; a[--j]) {}
+      if (i &lt; j){
+        std::swap(a[i],a[j]);
+      } 
+      else{
+        break;
+      }
+    }
+    std::swap(a[i],a[right-1]);
+
+    quickSort(a, left, i-1);
+    quickSort(a, i+1, right);
+  }
+  else {
+    insertionSort(a, left, right);
+  }
+}
+template &lt;typename Comparable&gt;
+const Comparable & median3(std::vector&lt;Comparable&gt; a, int left, int right){
+  int center = (left + right) / 2;
+  if (a[center] &lt; a[left])
+    std::swap(a[left], a[center]);
+  if (a[right] &lt; a[left])
+    std::swap(a[left], a[right]);
+  if (a[right] &lt; a[center])
+    std::swap(a[center], a[right]);
+
+  std::swap(a[center], a[right - 1]);
+  return a[right - 1];
+}
+                </code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div id="eksamen">
+              <h2>Exam questions</h2>
+              <div class="leftRight">
+                <div class="left">
+                  <h3>BST</h3>
+                  <p>
+                    An exam question for BST: Et (balanceret) binært søgetræ
+                    (binary search tree) kan implementeres som et simpelt array
+                    af heltal, hvor det første element (index 0) er ubrugt af
+                    hensyn til adressering. -1 angiver at elementet ikke
+                    findes/er tomt.
+                  </p>
+                  <ul>
+                    <li>
+                      Beskriv hvorledes dette kan gøres effektivt (således at et
+                      givet element kan findes i O(log(N) forudsat det binære
+                      søgetræ er balanceret), hvor N er antallet af elementer i
+                      træet.
+                    </li>
+                  </ul>
+                  <p>
+                    To answer this question, we need to have a BST represented
+                    in an array of integers. The root node is at index 1, and
+                    the left child is at [2*i], and the right child is as
+                    [2*i+1]. If a position is -1, there is no node at this
+                    position. We will use AVL tree given that it need to be
+                    balanced. To effectively search, we will start at the root 1
+                    and do a binary search from here.
+                  </p>
+                  <ul>
+                    <li>
+                      If the current element is -1, the element does not exist
+                      in the tree.
+                    </li>
+                    <li>
+                      If the current element matches the target, the element is
+                      found
+                    </li>
+                    <li>
+                      If the target is less than the current element, move to
+                      the left child (2*i)
+                    </li>
+                    <li>
+                      If the target is greater than the current element, move to
+                      the right child (2*i+1)
+                    </li>
+                  </ul>
+                  <p>Lets try with this array:</p>
+                  <table border="1">
+                    <tr>
+                      <td>Index</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>8</td>
+                      <td>9</td>
+                      <td>10</td>
+                      <td>11</td>
+                      <td>12</td>
+                      <td>13</td>
+                      <td>14</td>
+                      <td>15</td>
+                      <td>16</td>
+                      <td>17</td>
+                      <td>18</td>
+                      <td>19</td>
+                    </tr>
+                    <tr>
+                      <td>Tree</td>
+                      <td>-1</td>
+                      <td>20</td>
+                      <td>10</td>
+                      <td>30</td>
+                      <td>5</td>
+                      <td>15</td>
+                      <td>25</td>
+                      <td>35</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>13</td>
+                      <td>18</td>
+                      <td>21</td>
+                      <td>29</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Lets search for the element 13. We start by the root at
+                    index 1. 13 &lt; 20 so we go to index 2*1 where 10 is
+                    located. 13 &gt; 10 so now we go to index 2*2+1 where 15 is
+                    located. 13 &lt; 15 so now we go to index 2*5, where 13 is
+                    located. 13 == 13 and therefore we have now found the
+                    target.
+                  </p>
+                  <p>
+                    Kan det nedenstående array repræsentere et binært søgetræ?
+                    Begrund dit svar
+                  </p>
+                  <table border="1">
+                    <tr>
+                      <td>Index</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>8</td>
+                      <td>9</td>
+                      <td>10</td>
+                      <td>11</td>
+                      <td>12</td>
+                      <td>13</td>
+                      <td>14</td>
+                      <td>15</td>
+                    </tr>
+                    <tr>
+                      <td>Tree</td>
+                      <td>-1</td>
+                      <td>27</td>
+                      <td>21</td>
+                      <td>50</td>
+                      <td>17</td>
+                      <td>23</td>
+                      <td>48</td>
+                      <td>-1</td>
+                      <td>80</td>
+                      <td>19</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>49</td>
+                      <td>46</td>
+                      <td>75</td>
+                      <td>90</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Here we need to check, if both it is balanced, and if the
+                    child and are in the right subtrees. Let's present it
+                    visually
+                  </p>
+                  <pre>
+                  27
+                /    \
+              21      50
+             /  \    /  
+          17    23  48 
+         / \        / \   /  \
+      80   19     49  46 75  90            
+                </pre
+                  >
+                  <p>
+                    Here we can see pretty quickly that it cannot be used as a
+                    binary search tree since the subtrees don't fit the rules,
+                    since 80 is in the left subtree event though it is bigger
+                    than 27.
+                  </p>
+                  <p>
+                    Now for the next question: Hvis arrayet ikke kan
+                    repræsentere et binært søgetræ, så modificer det så det kan
+                    og argumenter for hvorfor det er tilfældet, samt tegn det
+                    binære søgetræ det repræsenterer.<br />We now need to update
+                    it so it can represent a BST which means, we'd like for it
+                    to look like this:
+                  </p>
+                  <pre>
+                  27
+               /      \
+             21        50
+           /    \    /    \
+          17    23  48     80
+           \       /  \   /  \
+           19     46  49 75  90 
+                </pre
+                  >
+                  <p>
+                    For this tree to be represented in an array, it would look
+                    like the table below
+                  </p>
+                  <table border="1">
+                    <tr>
+                      <td>Index</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>8</td>
+                      <td>9</td>
+                      <td>10</td>
+                      <td>11</td>
+                      <td>12</td>
+                      <td>13</td>
+                      <td>14</td>
+                      <td>15</td>
+                    </tr>
+                    <tr>
+                      <td>Tree</td>
+                      <td>-1</td>
+                      <td>27</td>
+                      <td>21</td>
+                      <td>50</td>
+                      <td>17</td>
+                      <td>23</td>
+                      <td>48</td>
+                      <td>80</td>
+                      <td>-1</td>
+                      <td>19</td>
+                      <td>-1</td>
+                      <td>-1</td>
+                      <td>46</td>
+                      <td>49</td>
+                      <td>75</td>
+                      <td>90</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Now this can be used as a BST, because all the left subtrees
+                    have values that are less than its parent node, and the
+                    right subtrees all have values that are greater than its
+                    parent node. Specifically this can be used as an AVL tree,
+                    since the difference in height is no greater than one at any
+                    given time. 80 has been moved to be on the right subtree of
+                    50, making at possible to use this as a BST.
+                  </p>
+                  <p>
+                    The last question for this particular problem is: Hvilken
+                    træ gennemløbs algoritme kan bruges for at komme fra det
+                    binære træ til array implementeringen (dvs besøger knuderne
+                    i samme rækkefølge som de findes i arrayet)? Hvad er
+                    tidskompleksiteten af dette gennemløb?
+                  </p>
+                  <p>
+                    The Order of traverse you would use to represent this tree
+                    in the given array (The altered on), would be Level-order
+                    Traversing. This is becuase you go level by level, from left
+                    to right, and write down each element you meet. The first
+                    level only has 27. The second level has 21 and 50, third has
+                    17, 23, 48, and 80 and so on. The time copmlexity for this
+                    would be O(N) where N is the number of elements is the tree.
+                    This is because you need to look at each element to write an
+                    array of the tree.
+                  </p>
+                  <h3>Max Heap</h3>
+                  <p>
+                    Skriv en klasse MaxHeap der kan indeholde ints ved brug af
+                    standardklassen vector fra C++ biblioteket MaxHeap’en skal
+                    have følgende operationer:
+                  </p>
+                  <pre><code class="cpp">
+bool isEmpty() const; //is the heap empty?
+int size(); //number of elements in the heap
+void insert(const int x); //add an element to the heap const
+int findMax() const; // find the maximum element of the heap
+int deleteMax(); //delete and return the maximum element of the heap
+                  </code></pre>
+                  <p>A class that implements this can be seen below:</p>
+                  <pre><code class="cpp">
+#include &lt;stdexcept&gt;
+#include &lt;vector&gt;
+class MaxHeap {
+private:
+  std::vector&lt;int&gt; heap;
+
+  void siftup(int index) {
+    while (index > 0 && heap[index] > heap[parent(index)]) {
+      std::swap(heap[index], heap[parent(index)]);
+      index = parent(index);
+    }
+  }
+
+  void siftdown(int index) {
+    int maxIndex = index;
+    int l = left(index);
+    if (l &lt; heap.size() && heap[l] &gt; heap[maxIndex]) {
+      maxIndex = l;
+    }
+
+    int r = right(index);
+    if (r &lt; heap.size() && heap[r] &gt; heap[maxIndex]) {
+      maxIndex = r;
+    }
+
+    if (index != maxIndex) {
+      std::swap(heap[index], heap[maxIndex]);
+      siftdown(maxIndex);
+    }
+  }
+
+  // helper functions
+  // for 0 indexing
+  int parent(int i) { return (i - 1) / 2; }
+  int left(int i) { return i * 2; }
+  int right(int i) { return i * 2 + 1; }
+
+public:
+  bool isEmpty() const { return heap.empty(); } // is the heap empty?
+  int size() { return heap.size(); } // number of elements in the heap
+  void insert(const int x) {
+    heap.push_back(x);
+    siftup(size() - 1);
+  } // add an element to the heap const
+  int findMax() const {
+    if (isEmpty()) {
+      throw std::runtime_error("Heap is empty");
+    }
+    return heap.front();
+  } // find the maximum element of the heap
+  int deleteMax() {
+    if (isEmpty()) {
+      throw std::runtime_error("Heap is empty");
+    }
+    int result = heap.front();
+
+    heap[0] = heap.back();
+    heap.pop_back();
+    if (!isEmpty()) {
+      siftdown(0);
+    }
+
+    return result;
+  } // delete and return the maximum element of the heap
+};
+                </code></pre>
+                  <p>Redegør for tidskompleksiteten af de fem operationer</p>
+                  <p>
+                    The time copmlexity for each operation can be seen below:
+                  </p>
+                  <table border="1">
+                    <tr>
+                      <td>Function</td>
+                      <td>isEmpty()</td>
+                      <td>size()</td>
+                      <td>insert()</td>
+                      <td>findMax()</td>
+                      <td>deleteMax()</td>
+                    </tr>
+                    <tr>
+                      <td>Time complexity</td>
+                      <td>O(1)</td>
+                      <td>O(1)</td>
+                      <td>O(log n)</td>
+                      <td>O(1)</td>
+                      <td>O(log n)</td>
+                    </tr>
+                  </table>
+                  <p>
+                    The oprations with the time complexity of O(log n) is
+                    because both siftup and siftdown has a time complexity of
+                    O(log n), since in the worst case scenario it will go
+                    through the height og the tree which has the space
+                    complexity of O(log n).
+                  </p>
+                </div>
+                <div class="right">
+                  <h3>MST</h3>
+                  <p>Given the following graph</p>
+                  <img
+                    src="img/mst.png"
+                    alt="Graph for MST"
+                    title="MST graph"
+                    width="700"
+                  />
+                  <p>
+                    How would the Minimum spanning tree (MST) Look like using
+                    Kruskal's algorithm? <br />
+                    Kruskal's algorithm takes the edge with the lowest cost at
+                    all times. This means that it does not start at one place
+                    and then connect all edges from the start. It takes the edge
+                    with the lowest cost, making sure no loop is occurring, and
+                    then takes the next lowest edge. It can also be represented
+                    is a table like below:
+                  </p>
+                  <table border="1">
+                    <tr>
+                      <td>Weight</td>
+                      <td>Source</td>
+                      <td>Destination</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>0</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>3</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>1</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>7</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>5</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>6</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>3</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>3</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>0</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>13</td>
+                      <td>1</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>14</td>
+                      <td>2</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>16</td>
+                      <td>3</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <td>19</td>
+                      <td>4</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>20</td>
+                      <td>3</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>21</td>
+                      <td>2</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td>25</td>
+                      <td>1</td>
+                      <td>3</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Using this, the MST using Kruskal's algorithm, would look
+                    like below:
+                  </p>
+                  <img
+                    src="img/MSTDone.png"
+                    alt="Kruskals MST on the graph"
+                    title="MST done for the graph"
+                    width="700"
+                  />
+                  <div>
+                    <h3>Find median</h3>
+                    <p>
+                      A function to find the median in a heap, designed with the
+                      MaxHeap to the left can be seen below: (it is altered to
+                      use typename T, but this can be changed to use int)
+                    </p>
+                    <pre><code class="cpp">
+template &lt;typename T&gt; T findMedian(MaxHeap&lt;T&gt; &heap) {
+  if (heap.isEmpty()) {
+    throw std::runtime_error("Heap is empty");
+  }
+
+  int origSize = heap.size();
+  std::vector&lt;T&gt; tempStorage;
+
+  // extract N/2 to find median LIFO
+  for (int i = 0; i &lt; (origSize + 1) / 2; ++i) {
+    tempStorage.push_back(heap.deleteMax());
+  }
+
+  T median;
+  if (origSize % 2 == 0) {
+    T first = tempStorage.back();
+    tempStorage.pop_back();
+    T second = tempStorage.back();
+    median = (first + second) / 2;
+    tempStorage.push_back(first);
+  } else {
+    median = tempStorage.back();
+  }
+
+  // reinsert the elements
+  for (int i = tempStorage.size() - 1; i &gt;= 0; --i) {
+    heap.insert(tempStorage[i]);
+  }
+
+  return median;
+}
+                  </code></pre>
+                    <p>
+                      The median is the value seperating the higher half from
+                      the lower half. It may be thought of as the "middle" value
+                      in a dataset. It is not the average or the mean. The
+                      median in a dataset depends on, rather theres an even
+                      amount of data, or an uneven amount. <br />
+                      If there's an odd number of observations, the middle one
+                      is selected. <br />
+                      An example with odd number of observations:<br />
+                      1, 3, 3, <strong>6</strong>, 7, 8, 9 <br />If there's an
+                      even number of observations, there is no distinct middle
+                      value, and therefore, the median is the arithmetic mean of
+                      the two middle values.<br />
+                      An example with even number of observations: <br />1, 2,
+                      3, <strong>4</strong>, <strong>5</strong>, 6, 8, 9<br />
+                      Here the median would be <em>4.5</em>, since this is the
+                      mean of 4+5 ((4+5)/2).
+                    </p>
+                  </div>
+                  <div>
+                    <h3>Hashing question</h3>
+                    <p>
+                      Consider the following hash function:
+                      <em>hash(x) =x % N</em>
+                      where N denotes the size of the array used to store the
+                      elements of the hash-table. Consider the following
+                      open-address hash table, where the elements 14,12,6 have
+                      already been inserted using hash function:
+                    </p>
+                    <div class="table-container">
+                      <div class="table-wrapper">
+                        <p>Given <br />hashtable</p>
+                        <table border="1">
+                          <tr>
+                            <td>Index</td>
+                            <td>Element</td>
+                          </tr>
+                          <tr>
+                            <td>0</td>
+                            <td>14</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>6</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="table-wrapper">
+                        <p>First two inserts<br />before rehash</p>
+                        <table border="1">
+                          <tr>
+                            <td>Index</td>
+                            <td>Element</td>
+                          </tr>
+                          <tr>
+                            <td>0</td>
+                            <td>14</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>27</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>10</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>6</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="table-wrapper">
+                        <p>First part of<br />new table</p>
+                        <table border="1">
+                          <tr>
+                            <td>Index</td>
+                            <td>Element</td>
+                          </tr>
+                          <tr>
+                            <td>0</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>6</td>
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td></td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="table-wrapper">
+                        <p>Second part of<br />new table</p>
+                        <table border="1">
+                          <tr>
+                            <td>Index</td>
+                            <td>Element</td>
+                          </tr>
+
+                          <tr>
+                            <td>8</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>9</td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>10</td>
+                            <td>27</td>
+                          </tr>
+                          <tr>
+                            <td>11</td>
+                            <td>10</td>
+                          </tr>
+                          <tr>
+                            <td>12</td>
+                            <td>12</td>
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>13</td>
+                          </tr>
+                          <tr>
+                            <td>14</td>
+                            <td>14</td>
+                          </tr>
+                          <tr>
+                            <td>15</td>
+                            <td>11</td>
+                          </tr>
+                          <tr>
+                            <td>16</td>
+                            <td></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <p>
+                      Draw the evolution of the hash table, when the following
+                      elements are inserted using the hash function and
+                      quadratic-probing: 10,27,11,13 .
+                    </p>
+                    <p>
+                      The <em>tableSize</em> is 7, therefore the hashing
+                      function is <strong>x % 7</strong> . For 10, this equals
+                      3. Since we need to rehash when we have 5 elements stored
+                      in the array We dont need to do this now. This is because
+                      70% * 7/100 = 4.9 which is the amount of elements that
+                      fills this table to 70%.<br />
+                      27 % 7 = 6 but there's already an element at index 6.
+                      Therefore we need quadratic probing. First we use
+                      1<sup>2</sup>, but theres also an element at index 0.
+                      2<sup>2</sup> = 4, but theres already an element at index
+                      3, where this would be. 3<sup>2</sup> = 9, going 9 steps,
+                      you land at the empty index 2.<br />Now the table looks
+                      like this and needs to be resized and rehashed since we
+                      have 5 elemnts and it is filled more than 70%:
+                    </p>
+
+                    <p>
+                      We find the next prime number after 7*2 which is 17 and
+                      rehash the values in the old table with the new table of
+                      size 17. After we put in the last elements which are 11
+                      and 13. 11 would get the index 15 since index 11 and 12
+                      are occupied. 13 would get the index 13. The iterations
+                      can be seen above.
+                    </p>
+                  </div>
+                  <div id="evenOdd">
+                    <h3>Even odd function</h3>
+                    <p>
+                      An exam question is given by: Udvikl en effektiv algoritme
+                      med følgende signatur: <br />template&lt;typename T&gt;
+                      vector&lt;T&gt; partitionEvenOdd(vector&lt;T&gt;& arg){<br />
+                      //returnerer en vektor hvor alle lige elementer er før
+                      alle ulige elementer <br />}<br />Algoritmen må IKKE bruge
+                      ekstra lager (dvs du må ikke oprette ekstra vector
+                      variabler). Algoritmen skal have kompleksitet O(N), hvor N
+                      = |arg| - dette skal du argumentere for er tilfældet.
+                    </p>
+                    <p>
+                      To do this, you must use two variables to keep track of
+                      the indices, a left and a right. The left will start at
+                      index 0 and right will start at index arg.size()-1. Now
+                      you will check if the left index is even, and if this is
+                      the case, you increment left. Same with the right, just
+                      check if it is odd, and if yes, go on to the next by
+                      decrementing right. Now if the left is odd, you stay there
+                      until you find an even value on the right side, and you
+                      swap those. You do this until the left passes the
+                      right.<br />
+                      Some code that answers this question:
+                    </p>
+                    <pre><code class="cpp">
+template &lt;typename T&gt; vector&lt;T&gt; partitionEvenOdd(vector&lt;T&gt; &arg) {
+  // returnerer en vektor hvor alle lige elementer er før alle ulige elementer
+  int left = 0;
+  int right = arg.size() - 1;
+
+  while (left &lt; right) {
+    while (left &lt; right && arg[left] % 2 == 0) {
+      ++left;
+    }
+    while (left &lt; right && arg[right] % 2 != 0) {
+      --right;
+    }
+    if (left &lt; right) {
+      swap(arg[left], arg[right]);
+      ++left;
+      --right;
+    }
+  }
+  return arg;
+}
+                  </code></pre>
+                    <p>
+                      This fits both of the criteria of Time complexity of
+                      <em>O(n)</em> and no additional use of space. (Space
+                      complexity of <em>O(1)</em>)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>Copyright 2024, Oliver B. Rosenkilde</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>
+      // Initialize highlight.js
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

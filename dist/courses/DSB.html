@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Teknologi AU</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css"
+    />
+    <link href="../style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id="forumHead">Welcome to the 3rd semester!</h1>
+    <nav id="navigation">
+      <a href="/" id="noUnderline">Home</a>
+      <a href="../third" id="noUnderline">3rd semester</a>
+    </nav>
+    <div class="content">
+      <aside>
+        <div class="course">
+          <a href="DOA.html">DOA</a>
+          <div class="subCourse">
+            <a href="#doaTitle">Top</a>
+            <a href="searching">Searching</a>
+            <a>Trees and heaps</a>
+            <a>Big O notation</a>
+            <a>Recursion</a>
+            <a>Stacks, queues and matrices</a>
+            <a>Priority queues</a>
+            <a>Sorting</a>
+            <a>Maze</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="DSB.html">DSB</a>
+          <div class="subCourse">
+            <a>Sampling og amplitude</a>
+            <a>Aliasering</a>
+            <a>Envelope</a>
+            <a>DFT, IFT, FFT, SDFT</a>
+            <a>FIR-, IIR-filtre</a>
+            <a>Signal flow graphs</a>
+            <a>PSD</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="HAL.html">HAL</a>
+          <div class="subCourse">
+            <a>Linux kernel</a>
+            <a>Linux modules</a>
+            <a>Interrupts</a>
+            <a>Device tree</a>
+            <a>Bus interface</a>
+            <a>Attributes and timers</a>
+            <a>Memory management</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="ISU.html">ISU</a>
+          <div class="subCourse">
+            <a>Different OS</a>
+            <a>Programming in Linux</a>
+            <a>Processes and threads</a>
+            <a>Thread synch</a>
+            <a>Thread comms</a>
+            <a href="ISU.html#osApi">OS API</a>
+            <a>Resource handling</a>
+            <a>Message system</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="NGK.html">NGK</a>
+          <div class="subCourse">
+            <a>Application layer</a>
+            <a>Transport layer</a>
+            <a>Network layer</a>
+          </div>
+        </div>
+        <div class="course">
+          <a href="PRJ3.html">PRJ3</a>
+          <div class="subCourse">
+            <a>Magichess</a>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <h2 id="doaTitle">Algorithms and Data Structures</h2>
+        <div class="topics">
+          <p class="instructions">
+            Scroll down or hover over the course to see what topics you can read
+            about
+          </p>
+          <h2 id="searching">Searching</h2>
+          <div>
+            <h3 id="bfs">BFS (Breadth-first Search)</h3>
+            <p>
+              BFS, also called Breadth-first search, finds the shortest path to
+              target in an unweighted graph. It searches in all direction
+              regardless of cost or proximity to the target. It uses a priority
+              queue (FIFO).
+            </p>
+          </div>
+          <h3 id="dijkstrasAlgorithm">Dijkstras algorithm</h3>
+          <h3 id="a*">The A* algorithm</h3>
+          <h2 id="trees">Trees and Heaps</h2>
+          <h3 id="minHeap">Min Heap</h3>
+          <h3 id="maxHeap">Max Heap</h3>
+          <h3 id="binary">Binary seach trees</h3>
+          <h3 id="hashing">Hashing</h3>
+          <p>There are different types of hashing</p>
+          <h2 id="bigO">Big O notation</h2>
+          <p>
+            Big O notation has two parts.
+            <strong>Time complexity</strong> and the
+            <strong>space complexity</strong>.
+          </p>
+          <div class="leftRight">
+            <div class="left" id="timeComplexity">
+              <h3>Time complexity</h3>
+              <p>
+                <ins>Time complexity</ins> represent how much time the code uses
+                to execute. An example would be a for loop that loop through the
+                length of an object. This would have the time complexity of
+                O(n), where n represents the length of the object. A nested for
+                loop that does this two times, then have a time complexity of
+                O(n<sup>2</sup>). There are different time complexities and to
+                summarise, we have
+                <em
+                  >O(1), O(n), O(log(n)), O(nlog(n)), O(n<sup>x</sup>),
+                  O(x<sup>n</sup>)</em
+                >
+                and <em>O(n!)</em>.<br />
+                What exactly is Big O notation? <br />
+                <q
+                  >Big O Notation is a mathematical notation used to describe
+                  the upper bound of an algorithm’s time complexity in terms of
+                  how it grows relative to the size of the input.</q
+                ><br />
+                A table summing up these notations can be seen
+                <a href="#oTable">below</a>
+              </p>
+              <table border="1" id="oTable">
+                <tr>
+                  <th>Big O Notation classes</th>
+                  <th>f(n)</th>
+                  <th>Number of operations, n = 10</th>
+                  <th>Execution time (1 instruction/μsec)</th>
+                </tr>
+                <tr>
+                  <td>Constant</td>
+                  <td>O(1)</td>
+                  <td>1</td>
+                  <td>1 μsec</td>
+                </tr>
+                <tr>
+                  <td>Logarithmic</td>
+                  <td>O(log(n))</td>
+                  <td>3.32</td>
+                  <td>3 μsec</td>
+                </tr>
+                <tr>
+                  <td>Linear</td>
+                  <td>O(n)</td>
+                  <td>10</td>
+                  <td>10 μsec</td>
+                </tr>
+                <tr>
+                  <td>O(nlog(n))</td>
+                  <td>O(nlog(n))</td>
+                  <td>33.2</td>
+                  <td>33 μsec</td>
+                </tr>
+                <tr>
+                  <td>Quadratic</td>
+                  <td>O(n<sup>2</sup>)</td>
+                  <td>10<sup>2</sup></td>
+                  <td>100 μsec</td>
+                </tr>
+                <tr>
+                  <td>Cubic</td>
+                  <td>O(n<sup>3</sup>)</td>
+                  <td>10<sup>3</sup></td>
+                  <td>1 msec</td>
+                </tr>
+                <tr>
+                  <td>Exponential</td>
+                  <td>O(2<sup>n</sup>)</td>
+                  <td>1024</td>
+                  <td>10 msec</td>
+                </tr>
+                <tr>
+                  <td>Factorial</td>
+                  <td>O(n!)</td>
+                  <td>10!</td>
+                  <td>3.6288 sec</td>
+                </tr>
+              </table>
+              <p>
+                As we can see, the most optimal is O(1) since it is the fastest.
+                And since we can have these time complexities, some algorithms
+                are better than others
+              </p>
+            </div>
+
+            <div class="right" id="spaceComplexity">
+              <h3>Space complexity</h3>
+              <p>
+                Space complexity is the amount of space a function or a program
+                takes up. It has the same notation of O(n), O(1) and so on.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h2 id="recursion">Recursion</h2>
+            <div class="leftRight">
+              <div class="left">
+                <p>
+                  Recursion is basically a for loop, but it makes code look
+                  cleaner and easier to read. It is a function that calls
+                  itself. An example can be seen below.
+                </p>
+                <pre><code class="cpp">
+              int sumDivisableBy3(int N) {
+                int sum = 0;
+                if (N <= 0) {
+                  return 0;
+                } else if (N % 3 == 0) {
+                  sum += N;
+                  cout << "added " << N << " to sum" << endl;
+                  N = N - 2; # subtract 2 and then subtract 1 more 
+                    # when you got out of the if statement
+                }
+                sum += sumDivisableBy3(N - 1);
+                return sum;
+              }
+            </code></pre>
+                <p>
+                  As you can see, this function calls itself. It also has a
+                  default case where if N &le; 0 it returns 0. This is where the
+                  function stops and it has the time complexity of O(N).
+                </p>
+              </div>
+              <div class="right">test</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>Copyright 2024, Oliver B. Rosenkilde</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>
+      // Initialize highlight.js
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
