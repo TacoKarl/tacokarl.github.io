@@ -8,7 +8,9 @@ h1 {
 }
 
 .explanation {
+    margin-left: 225px;
     text-align: center;
+    width: 75%;
 }
 
 .main-content .content-wrapper {
@@ -26,4 +28,28 @@ h1 {
     margin-right: 75px;
     width: 45%;
     border: 1px solid red;
+}
+
+.page-img {
+    max-width: 50%;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+code {
+    max-width: 100%;
+    font-family: 'Courier New', monospace; /* Brug en monospaced skrifttype */
+    font-size: 1rem; /* Sæt en passende skriftstørrelse */
+    color: #333; /* Standard tekstfarve for koden */
+}
+.my-pre {
+    color: #f4f4f4;
+    background-color: #f4f4f4; /* Lys baggrund for at gøre koden lettere at læse */
+    padding: 10px; /* Lidt polstring for at give luft omkring koden */
+    border-radius: 5px; /* Runde hjørner for et mere poleret look */
+    overflow-x: auto; /* Tillader vandret rullebjælke for lange linjer */
+    white-space: pre-wrap; /* Wrap linjer, så de ikke går udenfor containeren */
 }

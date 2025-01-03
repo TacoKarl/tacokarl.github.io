@@ -1,9 +1,129 @@
 import TeaOrCoffee from "../../../../components/TeaOrCoffee.tsx";
-
+import templateMethodImg from "./Img/templateMethod.png";
+import templateMethodPseudoImg from "./Img/templateMethodPseudo.png";
+import strategyPattern from "./Img/Strategy.png"
+import strategyClass from "./Img/Strategy-class.png"
+import Sorting from "../../../../components/Sorting.tsx";
 function StrategyPattern() {
     return (<div>
         <div>
             <h4>Strategy Pattern</h4>
+            <p>Strategy pattern giver nogle andre fordele frem for template method.
+                Her bliver der brugt et Interface og en Navigator. Klasse diagrammet
+                ser også en lille smule anderledes ud:</p>
+            <div className="center">
+                <img className={"page-img"} src={strategyPattern}/>
+            </div>
+            <p>Eksemplet kommer fra <a href={"https://refactoring.guru/design-patterns/strategy"}>Refactoring Guru</a> og
+                tager udgangspunkt i en navigations app. Hver strategi bruger interfacet
+                bygget til strategier. De implementerer hver især buildRoute(A, B)
+                anderledes i forhold til hvordan deres strategi skal fungere,
+                Selvom de får de samme argumenter. Det er altså behavioral design pattern.
+            </p>
+            <div className="center">
+                <img className={"page-img"} src={strategyClass}/>
+            </div>
+            <p>Man kan implementere det sådan:
+                (Taget ud fra bogen Agile Principles,
+                Patterns, and Practices in C#)</p>
+            <pre className={"my-pre"}><code>
+{`public class ApplicationRunner
+{
+  private Application itsApplication = null;
+  public ApplicationRunner(Application app)
+  {
+    itsApplication = app;
+  }
+  public void run ()
+  {
+    itsApplication.init();
+    while(!itsApplication.Done())
+      itsApplication.Idle();
+    itsApplication.Cleanup();
+  }
+}
+public interface Application
+{
+  void Init();
+  void Idle();
+  void Cleanup();
+  bool Done();
+}
+public class MyStrategy : Application
+{
+  public bool isDone = false;
+  
+  public static void Main(string[] args)
+  {
+    (new ApplicationRunner(new MyStrategy())).run();
+  }
+  public void Init()
+  {
+    // Do some initialization
+  }
+  public void Idle()
+  {
+    // Do work
+    isDone = true;
+  }
+  public void Cleanup()
+  {
+    Console.WriteLine("Cleaning up");
+  }
+  public bool Done()
+  {
+    return isDone;
+  }
+}`}
+            </code></pre>
+            <p>Herunder har jeg lavet en implementation af strategy Pattern
+            med sorterings metoder:</p>
+            <Sorting/>
+            <p>Selvfølgelig kan man ikke se hvad der sker, og det bliver
+                sorteret lige hurtigt, men det er bygget op strategy pattern
+                sådan her:
+            </p>
+            <pre className={"my-pre"}><code>
+{`interface SortingStrategy{ // Fælles strategi (interface)
+    sort(data: number []): number[];
+}
+class BubbleSort implements SortingStrategy {
+    sort(data: number[]): number[] {
+        const arr = [...data]; // Kopier input-arrayet
+        // Do Sort
+        return arr;
+    }
+}
+class SelectionSort implements SortingStrategy {
+    sort(data: number[]): number[] {
+        const arr = [...data]; // Kopier input-arrayet
+        // Do Sort
+        return arr;
+    }
+}
+class QuickSort implements SortingStrategy {
+    sort(data: number[]): number[] {
+        if (data.length <= 1) {
+            return data;
+        }
+        // Do Sort
+        return [...this.sort(left), pivot, ...this.sort(right)];
+    }
+}
+
+class Sorter {
+    private strategy: SortingStrategy;
+    constructor(strategy: SortingStrategy) {
+        this.strategy = strategy;
+    }
+    setStrategy(strategy: SortingStrategy): void {
+        this.strategy = strategy;
+    }
+    sort(data: number[]): number[] {
+        return this.strategy.sort(data);
+    }
+}`}
+            </code></pre>
         </div>
     </div>)
 }
@@ -18,7 +138,7 @@ function Strategy () {
             og derfor bliver koden duplikeret hvis du lave to klasser.
             <br/>I stedet for at lave to klasser kan man altså lave en template
             klasse. Her gør man brug af en abstract klasse. et eksempel kan ses herunder:</p>
-            <pre><code>
+            <pre className={"my-pre"}><code>
 {`abstract class Beverage {
   public prepareBeverage(): void {
       this.boilWater();
@@ -73,7 +193,21 @@ class Coffee : Beverage
             og skal derfor ikke tænke på implementationen, men kun om man vil
             have kaffe eller te.</p>
             <TeaOrCoffee/>
+            <p>Nu er Te og Kaffe altid bundet til at være en drik. Strategy Pattern
+            giver en anden mulighed. Et par klasse diagrammer kan ses herunder:</p>
+            <img className={"page-img"} src={templateMethodImg} alt={"Template Method class diagram"} />
+            <img className={"page-img"} src={templateMethodPseudoImg} alt={"Template Method class diagram Pseudo code"} />
             <StrategyPattern/>
+            <h4>Konklusion</h4>
+            <p>En konklusion på disse to patterns:<br/>
+                <em>Template method</em> er nemmere at implementere
+                men derimod også meget ufleksibel. <em>Strategy</em>
+                er fleksibel, men du skal lave en ekstra klasse, instansiere
+                et ekstra objekt, og koble dette objekt på systemet. Valget
+                mellem <em>Template</em> og <em>Strategy</em> falder altså på
+                om du har brug for fleksibiliteten fra <em>Strategy</em> eller om
+                du kan nøjes med den simplere <em>Template</em>. <br/>
+            </p>
         </div>
 
     </div>)
