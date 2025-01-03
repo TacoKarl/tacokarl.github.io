@@ -1,5 +1,5 @@
 .main-content {
-    background-color: #222222; /* Light Gray */
+     background-color: #222222; /* Light Gray */
     color: white; /* Dark Gray for text */
 }
 
@@ -7,9 +7,23 @@ h1 {
     text-align: center;
 }
 
+.explanation {
+    text-align: center;
+}
+
+.main-content .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 .main-content .tsLeft {
-    position: relative;
     margin-left: 75px;
     width: 45%;
-    /*border: 1px solid red;*/
+    border: 1px solid red;
+}
+
+.main-content .tsRight {
+    margin-right: 75px;
+    width: 45%;
+    border: 1px solid red;
 }
