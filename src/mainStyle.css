@@ -39,12 +39,6 @@ h1 {
     align-items: center;
 }
 
-code {
-    max-width: 100%;
-    font-family: 'Courier New', monospace; /* Brug en monospaced skrifttype */
-    font-size: 1rem; /* Sæt en passende skriftstørrelse */
-    color: #333; /* Standard tekstfarve for koden */
-}
 .my-pre {
     color: #f4f4f4;
     background-color: #f4f4f4; /* Lys baggrund for at gøre koden lettere at læse */
@@ -52,4 +46,10 @@ code {
     border-radius: 5px; /* Runde hjørner for et mere poleret look */
     overflow-x: auto; /* Tillader vandret rullebjælke for lange linjer */
     white-space: pre-wrap; /* Wrap linjer, så de ikke går udenfor containeren */
+}
+.my-pre code {
+    max-width: 100%;
+    font-family: 'MesloLGS NF', monospace; /* Brug en monospaced skrifttype */
+    font-size: 1rem; /* Sæt en passende skriftstørrelse */
+    color: #333; /* Standard tekstfarve for koden */
 }
