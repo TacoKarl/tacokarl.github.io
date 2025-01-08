@@ -144,6 +144,18 @@ public class MockTimeSink : Observer
                 blive notificeret hver gang <code>SetTime()</code> bliver
                 kaldt.
             </p>
+            <p>
+                <em>
+                    Dette understøtter Open/Closed principle i <strong>SOLID</strong> da
+                    du kan introducere nye subscribers uden at skulle ændre
+                    på publisher koden og modsat hvis der er en interface for
+                    din publisher.<br/>
+                    Single Responsibility Principle understøttes også,
+                    da vores publisher kun har ansvar for at notificere og
+                    administrere sine subscribers. Subscribers har kun ansvar
+                    for at håndtere opdateringer når de kommer
+                </em>
+            </p>
         </div>
 
     </div>)

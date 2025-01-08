@@ -124,6 +124,15 @@ class Sorter {
     }
 }`}
             </code></pre>
+            <p>
+                <em>
+                    Strategy Pattern understøtter Open/Closed principle
+                    i <strong>SOLID</strong> da du kan introducere nye strategier
+                    uden at skulle ændre på kodekonteksten.<br/>
+                    Sørger du for at hver strategi håndterer én specifik opgave
+                    understøtter du også Single Responsibility Principle
+                </em>
+            </p>
         </div>
     </div>)
 }
@@ -197,6 +206,33 @@ class Coffee : Beverage
             giver en anden mulighed. Et par klasse diagrammer kan ses herunder:</p>
             <img className={"page-img"} src={templateMethodImg} alt={"Template Method class diagram"} />
             <img className={"page-img"} src={templateMethodPseudoImg} alt={"Template Method class diagram Pseudo code"} />
+            <p>
+                <em>
+                    Template method pattern understøtter S, L og O
+                    i <strong>SOLID</strong>.<br/>
+                    <ul>
+                        <li>
+                            S fordi en klasse kun har et ansvar
+                            og de konkrete klasser implementere
+                            den specifikke logik for den specifikke
+                            klasse
+                        </li>
+                        <li>
+                            O fordi vores template er åben for udvidelse
+                            men lukket for ændring. De konkrete klasser
+                            kan implementere og overskrive specifikke
+                            metoder uden at ændre på vores template
+                            eller den generelle struktur
+                        </li>
+                        <li>
+                            L fordi vores konkrete klasser kan erstatte vores
+                            template uden at ødelægge programmet. Det kan man
+                            da de konkrete klasser kun implementerer de nødvendige
+                            metoder uden at ændre på den overordnede struktur.
+                        </li>
+                    </ul>
+                </em>
+            </p>
             <StrategyPattern/>
             <h4>Konklusion</h4>
             <p>En konklusion på disse to patterns:<br/>
